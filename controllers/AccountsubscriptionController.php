@@ -3,16 +3,16 @@
 namespace app\Controllers;
 
 use Yii;
-use app\models\Account;
-use app\models\AccountSearch;
+use app\models\AccountSubscription;
+use app\models\AccountsubscriptionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AccountController implements the CRUD actions for Account model.
+ * AccountsubscriptionController implements the CRUD actions for AccountSubscription model.
  */
-class AccountController extends Controller
+class AccountsubscriptionController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class AccountController extends Controller
     }
 
     /**
-     * Lists all Account models.
+     * Lists all AccountSubscription models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AccountSearch();
+        $searchModel = new AccountsubscriptionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class AccountController extends Controller
     }
 
     /**
-     * Displays a single Account model.
+     * Displays a single AccountSubscription model.
      * @param integer $id
      * @return mixed
      */
@@ -54,15 +54,15 @@ class AccountController extends Controller
     }
 
     /**
-     * Creates a new Account model.
+     * Creates a new AccountSubscription model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Account();
+        $model = new AccountSubscription();
 
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -72,7 +72,7 @@ class AccountController extends Controller
     }
 
     /**
-     * Updates an existing Account model.
+     * Updates an existing AccountSubscription model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class AccountController extends Controller
     }
 
     /**
-     * Deletes an existing Account model.
+     * Deletes an existing AccountSubscription model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,15 +104,15 @@ class AccountController extends Controller
     }
 
     /**
-     * Finds the Account model based on its primary key value.
+     * Finds the AccountSubscription model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Account the loaded model
+     * @return AccountSubscription the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Account::findOne($id)) !== null) {
+        if (($model = AccountSubscription::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -19,7 +19,9 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'description')->textInput(['maxlength' => 45]) ?>
 
     <?= $form->field($model, 'package_id')->dropDownList(\yii\helpers\ArrayHelper::map(app\models\AccountPackage::find()->all(), 'id', 'package_name')) ?>
-
+    
+    <?= $form->field($model, 'duration')->textInput(['maxlength' => 45]) ?>
+    
     <?= $form->field($model, 'status')->radioList([1 => 'Active', 0 => 'Inactive']) ?>
 
     <div class="form-group">

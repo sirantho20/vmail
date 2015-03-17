@@ -33,18 +33,21 @@ class AccountUsers extends ActiveRecord
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            'timestamp' => [
-                'class' => 'yii\behaviors\TimestampBehavior',
-                'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
-                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
-                ],
-            ],
-        ];
-    }
+//    public function behaviors()
+//    {
+//        return [
+//            'timestamp' => [
+//                'class' => 'yii\behaviors\TimestampBehavior',
+//                'attributes' => [
+//                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+//                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+//                ],
+//            ],
+//        ];
+//    }
+    
+
+
     /**
      * @inheritdoc
      */
@@ -110,12 +113,12 @@ class AccountUsers extends ActiveRecord
 
     public function beforeValidate()
     {
-
+        parent::beforeValidate();
         if($this->isNewRecord)
         {
             $this->generateAuthKey();
             $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
         }
-        return parent::beforeValidate();
+        return true;
     }
 }

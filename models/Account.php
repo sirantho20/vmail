@@ -14,11 +14,14 @@ use Yii;
  * @property integer $package_id
  * @property string $date_added
  * @property string $status
+ * @property integer $duration How long customer will be signed up for
  *
  * @property AccountPackage $package
  */
 class Account extends \yii\db\ActiveRecord
 {
+
+
     /**
      * @inheritdoc
      */
@@ -34,7 +37,7 @@ class Account extends \yii\db\ActiveRecord
     {
         return [
             [['package_id'], 'integer'],
-            [['date_added'], 'safe'],
+            [['duration'], 'safe'],
             [['name', 'description', 'domain'], 'string', 'max' => 45],
             [['status'], 'string', 'max' => 1]
         ];
@@ -54,9 +57,10 @@ class Account extends \yii\db\ActiveRecord
             'status' => 'Status',
         ];
     }
-    public function beforeSave() {
+    public function beforeValidate() {
+        parent::beforeValidate();
         $this->date_added = new \yii\db\Expression('now()');
-        return parent::beforeValidate();
+        return true;
     }
 
     /**
@@ -65,5 +69,32 @@ class Account extends \yii\db\ActiveRecord
     public function getPackage()
     {
         return $this->hasOne(AccountPackage::className(), ['id' => 'package_id']);
+    }
+    
+    public function signup()
+    {
+        if($this->save())
+        {
+            $sub = new AccountSubscription();
+            $sub->account_id = $this->id;
+            $sub->package_id = $this->package_id;
+            $sub->subscription_date = new \yii\db\Expression('now()');
+            $sub->duration = $this->duration;
+            $sub->expiry_date = new \yii\db\Expression('DATE_ADD(now(),INTERVAL :interval MONTH)',['interval'=>$this->duration]);
+            if($sub->save())
+            {
+                return true;
+            }
+            else 
+            {
+                print_r($sub->getErrors());
+                die();
+            }
+        }
+        else
+        {
+            return false;
+        }
+
     }
 }
