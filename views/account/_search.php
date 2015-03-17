@@ -21,9 +21,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description') ?>
 
+    <?= $form->field($model, 'domain') ?>
+
     <?= $form->field($model, 'package_id') ?>
 
-    <?= $form->field($model, 'date_added') ?>
+    <?php // echo $form->field($model, 'date_added') ?>
 
     <?php // echo $form->field($model, 'status') ?>
 

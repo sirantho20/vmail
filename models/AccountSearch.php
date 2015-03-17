@@ -18,8 +18,8 @@ class AccountSearch extends Account
     public function rules()
     {
         return [
-            [['id', 'package_id', 'status'], 'integer'],
-            [['name', 'description', 'date_added'], 'safe'],
+            [['id', 'package_id'], 'integer'],
+            [['name', 'description', 'domain', 'date_added', 'status'], 'safe'],
         ];
     }
 
@@ -59,11 +59,12 @@ class AccountSearch extends Account
             'id' => $this->id,
             'package_id' => $this->package_id,
             'date_added' => $this->date_added,
-            'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description]);
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'domain', $this->domain])
+            ->andFilterWhere(['like', 'status', $this->status]);
 
         return $dataProvider;
     }

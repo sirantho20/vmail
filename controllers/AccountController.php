@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers;
+namespace app\Controllers;
 
 use Yii;
 use app\models\Account;

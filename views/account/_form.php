@@ -12,15 +12,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => 45]) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'domain')->textInput(['maxlength' => 45]) ?>
 
-    <?= $form->field($model, 'package_id')->textInput() ?>
+    <?= $form->field($model, 'description')->textInput(['maxlength' => 45]) ?>
 
-    <?= $form->field($model, 'date_added')->textInput() ?>
+    <?= $form->field($model, 'package_id')->dropDownList(\yii\helpers\ArrayHelper::map(app\models\AccountPackage::find()->all(), 'id', 'package_name')) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->radioList([1 => 'Active', 0 => 'Inactive']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
