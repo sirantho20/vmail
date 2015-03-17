@@ -1,9 +1,24 @@
---ALTER DATABASE vmail DEFAULT COLLATE latin1_swedish_ci;
---ALTER TABLE account_users CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci
+-- MySQL dump 10.13  Distrib 5.5.38, for debian-linux-gnu (i686)
+--
+-- Host: localhost    Database: vmail
+-- ------------------------------------------------------
+-- Server version	5.5.38-0ubuntu0.14.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `account`
 --
+
 DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -15,10 +30,11 @@ CREATE TABLE `account` (
   `package_id` int(11) DEFAULT NULL,
   `date_added` datetime DEFAULT NULL,
   `status` char(1) DEFAULT NULL,
+  `duration` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_account_account_package_idx` (`package_id`),
   CONSTRAINT `fk_account_account_package` FOREIGN KEY (`package_id`) REFERENCES `account_package` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +52,29 @@ CREATE TABLE `account_package` (
   `next_due_date` date DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `account_subscription`
+--
+
+DROP TABLE IF EXISTS `account_subscription`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_subscription` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `account_id` int(11) NOT NULL,
+  `package_id` int(11) NOT NULL,
+  `subscription_date` datetime NOT NULL,
+  `expiry_date` datetime NOT NULL,
+  `duration` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `account_subscription_account_fk` (`account_id`),
+  KEY `account_subscription_package_fk` (`package_id`),
+  CONSTRAINT `account_subscription_package_fk` FOREIGN KEY (`package_id`) REFERENCES `account_package` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `account_subscription_account_fk` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +101,7 @@ CREATE TABLE `account_users` (
   `last_login` varchar(255) DEFAULT NULL,
   `account_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -88,7 +126,7 @@ CREATE TABLE `admin` (
   KEY `passwordlastchange` (`passwordlastchange`),
   KEY `expired` (`expired`),
   KEY `active` (`active`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +153,7 @@ CREATE TABLE `alias` (
   KEY `islist` (`islist`),
   KEY `expired` (`expired`),
   KEY `active` (`active`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,7 +172,7 @@ CREATE TABLE `alias_domain` (
   PRIMARY KEY (`alias_domain`),
   KEY `target_domain` (`target_domain`),
   KEY `active` (`active`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +186,7 @@ CREATE TABLE `anyone_shares` (
   `from_user` varchar(255) NOT NULL,
   `dummy` char(1) DEFAULT '1',
   PRIMARY KEY (`from_user`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +208,7 @@ CREATE TABLE `deleted_mailboxes` (
   KEY `username` (`username`),
   KEY `domain` (`domain`),
   KEY `admin` (`admin`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,7 +237,7 @@ CREATE TABLE `domain` (
   KEY `backupmx` (`backupmx`),
   KEY `expired` (`expired`),
   KEY `active` (`active`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,7 +258,7 @@ CREATE TABLE `domain_admins` (
   KEY `username` (`username`),
   KEY `domain` (`domain`),
   KEY `active` (`active`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -302,7 +340,21 @@ CREATE TABLE `mailbox` (
   KEY `passwordlastchange` (`passwordlastchange`),
   KEY `expired` (`expired`),
   KEY `active` (`active`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `migration`
+--
+
+DROP TABLE IF EXISTS `migration`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migration` (
+  `version` varchar(180) NOT NULL,
+  `apply_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,7 +375,7 @@ CREATE TABLE `recipient_bcc_domain` (
   KEY `bcc_address` (`bcc_address`),
   KEY `expired` (`expired`),
   KEY `active` (`active`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -345,7 +397,7 @@ CREATE TABLE `recipient_bcc_user` (
   KEY `bcc_address` (`bcc_address`),
   KEY `expired` (`expired`),
   KEY `active` (`active`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -366,7 +418,7 @@ CREATE TABLE `sender_bcc_domain` (
   KEY `bcc_address` (`bcc_address`),
   KEY `expired` (`expired`),
   KEY `active` (`active`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -389,7 +441,7 @@ CREATE TABLE `sender_bcc_user` (
   KEY `domain` (`domain`),
   KEY `expired` (`expired`),
   KEY `active` (`active`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -406,7 +458,7 @@ CREATE TABLE `share_folder` (
   PRIMARY KEY (`from_user`,`to_user`),
   KEY `from_user` (`from_user`),
   KEY `to_user` (`to_user`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -423,7 +475,7 @@ CREATE TABLE `used_quota` (
   `domain` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`username`),
   KEY `domain` (`domain`)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -455,4 +507,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-03-17 11:01:07
+-- Dump completed on 2015-03-17 21:02:38

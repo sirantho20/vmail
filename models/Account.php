@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "account".
@@ -21,7 +22,17 @@ use Yii;
 class Account extends \yii\db\ActiveRecord
 {
 
-
+    public function behaviors()
+{
+    return [
+        [
+            'class' => \yii\behaviors\TimestampBehavior::className(),
+            'createdAtAttribute' => 'date_added',    //or 'LastEdited'
+            'updatedAtAttribute' => false,
+            'value' => new Expression('NOW()'),
+        ],
+    ];
+}
     /**
      * @inheritdoc
      */
@@ -56,11 +67,6 @@ class Account extends \yii\db\ActiveRecord
             'package_id' => 'Package',
             'status' => 'Status',
         ];
-    }
-    public function beforeValidate() {
-        parent::beforeValidate();
-        $this->date_added = new \yii\db\Expression('now()');
-        return true;
     }
 
     /**

@@ -56,6 +56,17 @@ use Yii;
  */
 class Mailbox extends \yii\db\ActiveRecord
 {
+//    public function behaviors()
+//    {
+//        return [
+//            [
+//                'class' => \yii\behaviors\TimestampBehavior::className(),
+//                'createdAtAttribute' => 'password',    //or 'LastEdited'
+//                'updatedAtAttribute' => false,
+//                'value' => shell_exec('openssl passwd -1 '.$this->password)
+//            ],
+//        ];
+//    }
     /**
      * @inheritdoc
      */
@@ -136,8 +147,8 @@ class Mailbox extends \yii\db\ActiveRecord
 
     public function beforeValidate()
     {
-        parent::beforeValidate();
         $this->password = shell_exec('openssl passwd -1 '.$this->password);
+        return parent::beforeValidate();
     }
-}
 
+}
