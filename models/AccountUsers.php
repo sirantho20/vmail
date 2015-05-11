@@ -25,6 +25,8 @@ use yii\db\ActiveRecord;
  */
 class AccountUsers extends ActiveRecord
 {
+    public $password;
+
     const STATUS_ACTIVE = 1;
     const STATUS_DISABLED = 0;
 
@@ -84,7 +86,7 @@ class AccountUsers extends ActiveRecord
             'last_name' => 'Last Name',
             'account_id' => 'Account ID',
             'auth_key' => 'Auth Key',
-            'password_hash' => 'Password Hash',
+            'password_hash' => 'Password',
             'password_reset_token' => 'Password Reset Token',
             'email' => 'Email',
             'role' => 'Role',
@@ -117,7 +119,7 @@ class AccountUsers extends ActiveRecord
         if($this->isNewRecord)
         {
             $this->generateAuthKey();
-            $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
+            $this->password_hash = Yii::$app->security->generatePasswordHash($this->password);
         }
         return true;
     }

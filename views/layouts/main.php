@@ -36,6 +36,7 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
                     ['label' => 'Home', 'url' => ['/site/index']],
+                    ['label' => 'Emails', 'url' => ['/mailbox/index']],
                     ['label' => 'Accounts', 'url' => yii\helpers\Url::to(['account/index'])],
                     ['label' => 'Packages', 'url' => yii\helpers\Url::to(['accountpackage/index'])],
                     Yii::$app->user->isGuest ?

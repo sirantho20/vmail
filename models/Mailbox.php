@@ -56,6 +56,7 @@ use Yii;
  */
 class Mailbox extends \yii\db\ActiveRecord
 {
+    public $pword;
 //    public function behaviors()
 //    {
 //        return [
@@ -83,7 +84,7 @@ class Mailbox extends \yii\db\ActiveRecord
         return [
             [['username', 'password', 'quota', 'name'], 'required'],
             [['quota', 'isadmin', 'isglobaladmin', 'enablesmtp', 'enablesmtpsecured', 'enablepop3', 'enablepop3secured', 'enableimap', 'enableimapsecured', 'enabledeliver', 'enablelda', 'enablemanagesieve', 'enablemanagesievesecured', 'enablesieve', 'enablesievesecured', 'enableinternal', 'enabledoveadm', 'enablelib-storage', 'enablelmtp', 'lastloginipv4', 'active'], 'integer'],
-            [['lastlogindate', 'passwordlastchange', 'created', 'modified', 'expired'], 'safe'],
+            [['lastlogindate', 'passwordlastchange', 'created', 'modified', 'expired','pword'], 'safe'],
             [['disclaimer', 'allowedsenders', 'rejectedsenders', 'allowedrecipients', 'rejectedrecipients', 'settings'], 'string'],
             [['username', 'password', 'name', 'storagebasedirectory', 'storagenode', 'maildir', 'domain', 'transport', 'department', 'rank', 'employeeid', 'lastloginprotocol', 'local_part'], 'string', 'max' => 255],
             [['language'], 'string', 'max' => 5]
@@ -96,7 +97,7 @@ class Mailbox extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'username' => 'Username',
+            'username' => 'Email',
             'password' => 'Password',
             'name' => 'Full Name',
             'language' => 'Language',
@@ -140,15 +141,25 @@ class Mailbox extends \yii\db\ActiveRecord
             'created' => 'Created',
             'modified' => 'Modified',
             'expired' => 'Expired',
-            'active' => 'Active',
+            'active' => 'Status',
             'local_part' => 'Local Part',
+            'pword' => 'Password'
         ];
     }
 
     public function beforeValidate()
     {
-        $this->password = shell_exec('openssl passwd -1 '.$this->password);
-        return parent::beforeValidate();
+        parent::beforeValidate();
+        
+        if($this->isNewRecord)
+        {
+            $this->domain = Account::findOne(\Yii::$app->user->identity->account_id)->domain;
+            $this->password = shell_exec('openssl passwd -1 '.$this->pword);
+            $this->username = $this->username.'@'.$this->domain;
+        }
+        
+        return true;
     }
+    
 
 }

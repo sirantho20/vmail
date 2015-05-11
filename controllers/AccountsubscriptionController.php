@@ -7,7 +7,7 @@ use app\models\AccountSubscription;
 use app\models\AccountsubscriptionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * AccountsubscriptionController implements the CRUD actions for AccountSubscription model.
@@ -16,11 +16,15 @@ class AccountsubscriptionController extends Controller
 {
     public function behaviors()
     {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['post'],
+        
+                return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
                 ],
             ],
         ];

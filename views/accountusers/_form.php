@@ -18,9 +18,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'last_name')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'account_id')->textInput() ?>
+    <?= $form->field($model, 'account_id')->dropDownList(yii\helpers\ArrayHelper::map(app\models\Account::find()->all(), 'id', 'name')) ?>
 
-    <?= $form->field($model, 'password_hash')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'password')->textInput(['maxlength' => 255]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
