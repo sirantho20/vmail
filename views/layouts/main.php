@@ -4,6 +4,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\bootstrap\Alert;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -37,8 +38,8 @@ AppAsset::register($this);
                 'items' => [
                     ['label' => 'Home', 'url' => ['/site/index']],
                     ['label' => 'Emails', 'url' => ['/mailbox/index']],
-                    ['label' => 'Accounts', 'url' => yii\helpers\Url::to(['account/index'])],
-                    ['label' => 'Packages', 'url' => yii\helpers\Url::to(['accountpackage/index'])],
+                    ['label' => 'Accounts', 'url' =>['account/index'], 'visible' => app\components\Mailmax::isAdmin()],
+                    ['label' => 'Packages', 'url' =>['accountpackage/index'],'visible' => app\components\Mailmax::isAdmin()],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
                         ['label' => 'Logout (' . Yii::$app->user->identity->email . ')',
@@ -53,6 +54,19 @@ AppAsset::register($this);
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
+            <div class="container">
+            <?php 
+            
+                
+                    foreach (Yii::$app->session->getAllFlashes() as $key => $value)
+                    {
+                        
+                        echo '<div class="alert alert-'.$key.' alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.  $value[0].'
+</div>';
+                    } 
+            ?>
+            </div>
             <?= $content ?>
         </div>
     </div>

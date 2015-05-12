@@ -63,6 +63,16 @@ class MailboxController extends Controller
      */
     public function actionCreate()
     {
+        $allowed = \app\models\Account::findOne(\Yii::$app->user->identity->account_id)->package->emails_allowed;
+        $created = Mailbox::find()->where(['domain' => \app\models\Account::findOne(\Yii::$app->user->identity->account_id)->domain])->count();
+        
+        // Validate mailbox limits
+        if($created + 1 > $allowed)
+        {
+            \Yii::$app->session->addFlash('warning', 'You have reached the limit for allowed mailboxes. Please upgrade your account to be able to create new mailboxes');
+            return $this->redirect(['index']);
+        }
+        
         $model = new Mailbox();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -85,7 +95,8 @@ class MailboxController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->username]);
+            //return $this->redirect(['view', 'id' => $model->username]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,

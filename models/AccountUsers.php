@@ -66,7 +66,7 @@ class AccountUsers extends ActiveRecord
         return [
             [['first_name', 'last_name', 'password_hash', 'email', 'account_id'], 'required'],
             [['account_id', 'role', 'status'], 'integer'],
-            [['created_at', 'updated_at', 'last_login'], 'safe'],
+            [['created_at', 'updated_at', 'last_login', 'password'], 'safe'],
             [['first_name', 'last_name', 'auth_key', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
 
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
@@ -116,10 +116,14 @@ class AccountUsers extends ActiveRecord
     public function beforeValidate()
     {
         parent::beforeValidate();
+        
+        if($this->password != '')
+        {
+            $this->password_hash = Yii::$app->security->generatePasswordHash($this->password);
+        }
         if($this->isNewRecord)
         {
             $this->generateAuthKey();
-            $this->password_hash = Yii::$app->security->generatePasswordHash($this->password);
         }
         return true;
     }

@@ -14,6 +14,18 @@ use yii\filters\AccessControl;
  */
 class AccountpackageController extends Controller
 {
+    public function init() 
+    {
+        parent::init();
+        if(!\Yii::$app->user->isGuest)
+        {
+            if(!\app\components\Mailmax::isAdmin())
+            {
+                throw new \yii\web\BadRequestHttpException('You are not allowed to access this page');
+            }
+        }
+    }
+    
     public function behaviors()
     {
         

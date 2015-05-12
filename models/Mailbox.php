@@ -83,6 +83,7 @@ class Mailbox extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'password', 'quota', 'name'], 'required'],
+            [['username'], 'unique'],
             [['quota', 'isadmin', 'isglobaladmin', 'enablesmtp', 'enablesmtpsecured', 'enablepop3', 'enablepop3secured', 'enableimap', 'enableimapsecured', 'enabledeliver', 'enablelda', 'enablemanagesieve', 'enablemanagesievesecured', 'enablesieve', 'enablesievesecured', 'enableinternal', 'enabledoveadm', 'enablelib-storage', 'enablelmtp', 'lastloginipv4', 'active'], 'integer'],
             [['lastlogindate', 'passwordlastchange', 'created', 'modified', 'expired','pword'], 'safe'],
             [['disclaimer', 'allowedsenders', 'rejectedsenders', 'allowedrecipients', 'rejectedrecipients', 'settings'], 'string'],
@@ -151,10 +152,14 @@ class Mailbox extends \yii\db\ActiveRecord
     {
         parent::beforeValidate();
         
+        if($this->pword != '')
+        {
+            $this->password = shell_exec('openssl passwd -1 '.$this->pword);
+        }
+        
         if($this->isNewRecord)
         {
             $this->domain = Account::findOne(\Yii::$app->user->identity->account_id)->domain;
-            $this->password = shell_exec('openssl passwd -1 '.$this->pword);
             $this->username = $this->username.'@'.$this->domain;
         }
         

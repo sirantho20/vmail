@@ -23,14 +23,28 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
             'name',
             'domain',
-            'package_id',
-            'date_added',
-            'status',
+            'package.package_name',
+            [
+                'header' => 'Date Added',
+                'format' => 'html',
+                'value' => function($data){ return Yii::$app->formatter->asDate($data['date_added']);}
+            ],
+            [
+                'header' => 'Status',
+                'format' => 'html',
+                'value' => function($data){
+                    $label = $data['status'] == 1 ? 'active' : 'disabled';
+                    $class = $label == 'active'? 'success' : 'danger';
+                    return "<span class='label label-$class'>".$label.'</span>';
+                },
+            ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update} {delete}'
+            ],
         ],
     ]); ?>
 
