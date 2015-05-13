@@ -26,9 +26,8 @@ AppAsset::register($this);
     <div id="h">
         <div class="logo"><img src="http://www.softcube.co/wp-content/themes/softcube/images/logo.png" style="border: 1px solid white; border-radius: 10px; padding: 10px; background-color:rgba(255,255,255, 0.4)" /></div>
       <div class="social hidden-xs">
-        <a href="#"><i class="ion-social-twitter"></i></a>
-        <a href="#"><i class="ion-social-instagram"></i></a>
-        <a href="#"><i class="ion-social-facebook"></i></a>
+        <a href="https://www.facebook.com/softcubelimited"><i class="ion-social-twitter"></i></a>
+        <a href="https://twitter.com/softcubelimited"><i class="ion-social-facebook"></i></a>
       </div>
       <div class="container">
         <div class="row">
@@ -76,9 +75,8 @@ AppAsset::register($this);
       <div class="container">
         <div class="row centered">
           <div class="col-md-8 col-md-offset-2">
-            <h1>Join your experiences with the people you care more. Let us help you.</h1>
-            <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</h4>
-            <p><button class="btn btn-conf-2 btn-green">Learn More</button></p>
+            <h1>We delight our customers with EXCELLENT and QUICK support to keep their business running</h1>
+            <h4>24/7 reliable support at no additional cost</h4>
           </div><!--/col-md-8-->
         </div>
       </div>
@@ -208,17 +206,12 @@ AppAsset::register($this);
       <div class="container">
         <div class="row centered">
           <h2>You Can Contact Us</h2>
-          <h5>HELLO@LANDINGSUMO.COM</h5>
+          <h5><?= Yii::$app->formatter->asEmail('INFO@SOFTCUBE.CO') ?></h5>
 
           <p class="mt">
-            <a href="#"><i class="ion-social-twitter"></i></a>
-            <a href="#"><i class="ion-social-dribbble"></i></a>
-            <a href="#"><i class="ion-social-instagram"></i></a>
-            <a href="#"><i class="ion-social-facebook"></i></a>
-            <a href="#"><i class="ion-social-pinterest"></i></a>
-            <a href="#"><i class="ion-social-tumblr"></i></a>
+            <a href="https://facebook.com/softcubelimited"><i class="ion-social-twitter"></i></a>
+            <a href="https://twitter.com/softcubelimited"><i class="ion-social-facebook"></i></a>
           </p>
-          <h6 class="mt">COPYRIGHT 2014 - LANDING SUMO</h6>
         </div><!--/row-->
       </div><!--/container-->
     </div><!--/F-->
