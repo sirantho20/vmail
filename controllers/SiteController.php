@@ -49,6 +49,10 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        if(\Yii::$app->user->isGuest)
+        {
+            $this->layout = '//main1';
+        }
         return $this->render('index');
         //return $this->redirect(['mailbox/index']);
     }

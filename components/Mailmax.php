@@ -17,6 +17,8 @@ class Mailmax {
     
     public static function isAdmin()
     {
+        if(!\Yii::$app->user->isGuest)
+        {
         if(!in_array(\Yii::$app->user->identity->email, \Yii::$app->params['adminUsers']))
             {
                return false;
@@ -25,5 +27,10 @@ class Mailmax {
             {
                 return true;
             }
+        }
+        else
+        {
+            return false;
+        }
     }
 }
