@@ -52,9 +52,14 @@ class SiteController extends Controller
         if(\Yii::$app->user->isGuest)
         {
             $this->layout = '//main1';
+            return $this->render('index');
         }
-        //return $this->render('index');
-        return $this->redirect(['mailbox/index']);
+        else
+        {
+            return $this->redirect(['mailbox/index']);
+        }
+        
+        
     }
 
     public function actionLogin()
@@ -78,6 +83,7 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+        
     }
 
     public function actionContact()
