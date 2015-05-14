@@ -32,7 +32,7 @@ AppAsset::register($this);
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-md-offset-2 centered">
-            <h1>Welcome to a professional experience<br/>Enjoy our service</h1><br />
+            <h1>Welcome to a professional email<br/>experience. Enjoy our service</h1><br />
             <?php
                 Modal::begin([
                 'header' => '<div style="color: black;">Sign In</div>',

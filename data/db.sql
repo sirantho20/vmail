@@ -15,6 +15,25 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+--
+-- Table structure for table `account_package`
+--
+
+DROP TABLE IF EXISTS `account_package`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_package` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `package_name` varchar(45) DEFAULT NULL,
+  `emails_allowed` int(11) DEFAULT NULL,
+  `quota_allowed` int(11) DEFAULT NULL,
+  `next_due_date` date DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 --
 -- Table structure for table `account`
 --
@@ -37,23 +56,6 @@ CREATE TABLE `account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Table structure for table `account_package`
---
-
-DROP TABLE IF EXISTS `account_package`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `account_package` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `package_name` varchar(45) DEFAULT NULL,
-  `emails_allowed` int(11) DEFAULT NULL,
-  `quota_allowed` int(11) DEFAULT NULL,
-  `next_due_date` date DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `account_subscription`
