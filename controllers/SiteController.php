@@ -53,8 +53,8 @@ class SiteController extends Controller
         {
             $this->layout = '//main1';
         }
-        return $this->render('index');
-        //return $this->redirect(['mailbox/index']);
+        //return $this->render('index');
+        return $this->redirect(['mailbox/index']);
     }
 
     public function actionLogin()

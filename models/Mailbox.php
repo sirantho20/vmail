@@ -88,7 +88,8 @@ class Mailbox extends \yii\db\ActiveRecord
             [['lastlogindate', 'passwordlastchange', 'created', 'modified', 'expired','pword'], 'safe'],
             [['disclaimer', 'allowedsenders', 'rejectedsenders', 'allowedrecipients', 'rejectedrecipients', 'settings'], 'string'],
             [['username', 'password', 'name', 'storagebasedirectory', 'storagenode', 'maildir', 'domain', 'transport', 'department', 'rank', 'employeeid', 'lastloginprotocol', 'local_part'], 'string', 'max' => 255],
-            [['language'], 'string', 'max' => 5]
+            [['language'], 'string', 'max' => 5],
+            [['pword'], 'string', 'min' => 6]
         ];
     }
 
