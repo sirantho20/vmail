@@ -35,7 +35,7 @@ class AccountController extends Controller
                 'rules' => [
                     [
                         'allow' => true, //function(){ if(\Yii::$app->user->isGuest) {return false; } else { return (in_array(\Yii::$app->user->identity->email, \Yii::$app->params['adminUsers'])); };},
-                        'roles' => ['?'],
+                        'roles' => ['@'],
                     ],
                 ],
             ],
