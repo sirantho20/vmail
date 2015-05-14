@@ -154,7 +154,8 @@ class Mailbox extends \yii\db\ActiveRecord
         
         if($this->pword != '')
         {
-            $this->password = shell_exec('openssl passwd -1 '.$this->pword);
+            //$this->password = shell_exec('openssl passwd -1 '.$this->pword);
+            $this->password = shell_exec('doveadm pw -s \'ssha512\' -p '.$this->pword);
         }
         
         if($this->isNewRecord)
