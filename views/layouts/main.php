@@ -38,9 +38,9 @@ AppAsset::register($this);
                 'items' => [
                     ['label' => 'Home', 'url' => ['/site/index']],
                     ['label' => 'Emails', 'url' => ['/mailbox/index']],
-                    ['label' => 'Accounts', 'url' =>['account/index'], 'visible' => app\components\Mailmax::isAdmin()],
-                    ['label' => 'Users', 'url' =>['accountusers/index'], 'visible' => app\components\Mailmax::isAdmin()],
-                    ['label' => 'Packages', 'url' =>['accountpackage/index'],'visible' => app\components\Mailmax::isAdmin()],
+                    ['label' => 'Accounts', 'url' =>['/account/index'], 'visible' => app\components\Mailmax::isAdmin()],
+                    ['label' => 'Users', 'url' =>['/accountusers/index'], 'visible' => app\components\Mailmax::isAdmin()],
+                    ['label' => 'Packages', 'url' =>['/accountpackage/index'],'visible' => app\components\Mailmax::isAdmin()],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
                         ['label' => 'Logout (' . Yii::$app->user->identity->email . ')',
