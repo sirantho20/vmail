@@ -12,17 +12,15 @@ $this->title = 'Accounts';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="account-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Account', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
     
+    <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
+    <div class="panel panel-default">
+  <!-- Default panel contents --><?= Html::a('<i class="fa fa-plus"> New Account</i>', ['create'], ['class' => 'btn btn-sm btn-success', 'style'=> 'float: right; margin:2px;']) ?>
+  <div class="panel-heading">Accounts </div>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary' => '',
         'columns' => [
             'name',
             'domain',
@@ -49,5 +47,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); 
                 ?>
-
+</div>
 </div>

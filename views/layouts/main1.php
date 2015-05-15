@@ -88,19 +88,41 @@ AppAsset::register($this);
         <div class="col-md-4">
           <div class="price-table">
               <div class="p-head">
+                Starter
+              </div>
+              <div class="p-body">
+                <ul class="features">
+                  <li>15 Mailboxes</li>
+                  <li>10GB Storage/Mailbox</li>
+                  <li>Webmail Access</li>
+                  <li>24/7 Free Support</li>
+                </ul>
+                <div class="price">
+                  <span class="sub">$</span>
+                  <span class="detail">26</span>
+                  <span class="sub">/yr.</span>
+                </div><!--/price-->
+                <button class="btn btn-conf-2 btn-green">Subscribe Now</button>
+              </div><!--/p-body-->
+          </div><!--/price-table-->
+        </div><!--/col-md-4-->
+
+         <div class="col-md-4">
+          <div class="price-table">
+              <div class="p-head">
                 Standard
               </div>
               <div class="p-body">
                 <ul class="features">
-                  <li>10GB Storage Space</li>
-                  <li>Free Support</li>
-                  <li>100 Users</li>
-                  <li>100GB Bandwith</li>
+                 <li>25 Mailboxes</li>
+                  <li>15GB Storage/Mailbox</li>
+                  <li>Webmail Access</li>
+                  <li>24/7 Free Support</li>
                 </ul>
                 <div class="price">
                   <span class="sub">$</span>
-                  <span class="detail">29</span>
-                  <span class="sub">/mo.</span>
+                  <span class="detail">25</span>
+                  <span class="sub">/yr.</span>
                 </div><!--/price-->
                 <button class="btn btn-conf-2 btn-green">Subscribe Now</button>
               </div><!--/p-body-->
@@ -114,37 +136,15 @@ AppAsset::register($this);
               </div>
               <div class="p-body">
                 <ul class="features">
-                  <li>50GB Storage Space</li>
-                  <li>Free Support</li>
-                  <li>500 Users</li>
-                  <li>500GB Bandwith</li>
+                  <li>50 Mailboxes</li>
+                  <li>20GB Storage/Mailbox</li>
+                  <li>Webmail Access</li>
+                  <li>24/7 Free Support</li>
                 </ul>
                 <div class="price">
                   <span class="sub">$</span>
-                  <span class="detail">49</span>
-                  <span class="sub">/mo.</span>
-                </div><!--/price-->
-                <button class="btn btn-conf-2 btn-green">Subscribe Now</button>
-              </div><!--/p-body-->
-          </div><!--/price-table-->
-        </div><!--/col-md-4-->
-
-         <div class="col-md-4">
-          <div class="price-table">
-              <div class="p-head">
-                Corporate
-              </div>
-              <div class="p-body">
-                <ul class="features">
-                  <li>100GB Storage Space</li>
-                  <li>Free Support</li>
-                  <li>10,000 Users</li>
-                  <li>3TB Bandwith</li>
-                </ul>
-                <div class="price">
-                  <span class="sub">$</span>
-                  <span class="detail">89</span>
-                  <span class="sub">/mo.</span>
+                  <span class="detail">24</span>
+                  <span class="sub">/yr.</span>
                 </div><!--/price-->
                 <button class="btn btn-conf-2 btn-green">Subscribe Now</button>
               </div><!--/p-body-->

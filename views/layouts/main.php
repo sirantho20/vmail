@@ -5,6 +5,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\bootstrap\Alert;
+use yii\bootstrap\ButtonDropdown;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -44,9 +45,14 @@ AppAsset::register($this);
                     ['label' => 'Packages', 'url' =>['/accountpackage/index'],'visible' => app\components\Mailmax::isAdmin()],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
-                        ['label' => 'Logout (' . Yii::$app->user->identity->email . ')',
-                            'url' => ['/site/logout'],
-                            'linkOptions' => ['data-method' => 'post']],
+                        [
+                            'label' => Yii::$app->user->identity->first_name,
+                            'items' => [
+                                 ['label' => 'Change Password', 'url' => ['user/changepassword']],
+                                 '<li class="divider"></li>',
+                                 ['label' => 'Sign Out', 'url' => ['/site/logout'],'linkOptions' => ['data-method' => 'post']],
+                            ],
+                        ],
                 ],
             ]);
             NavBar::end();
@@ -60,11 +66,11 @@ AppAsset::register($this);
             <?php 
             
                 
-                    foreach (Yii::$app->session->getAllFlashes() as $key => $value)
+                    foreach (Yii::$app->session->getAllFlashes() as $key => $message)
                     {
                         
                         echo '<div class="alert alert-'.$key.' alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.  $value[0].'
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.  $message.'
 </div>';
                     } 
             ?>

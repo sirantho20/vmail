@@ -7,21 +7,19 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\MailboxSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Mailboxes';
+$this->title = 'Email Accounts';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mailbox-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Mailbox', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <div class="panel panel-default">
+  <!-- Default panel contents --><?= Html::a('<i class="fa fa-plus">New Email</i>', ['create'], ['class' => 'btn btn-sm btn-success', 'style'=> 'float: right; margin:2px;']) ?>
+  <div class="panel-heading">Email Accounts </div>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summaryOptions' => ['style'=> 'float: right;'],
         'columns' => [
             'name',
             'username',
@@ -42,5 +40,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-
+    </div>
 </div>
