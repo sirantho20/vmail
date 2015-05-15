@@ -7,6 +7,7 @@ use yii\bootstrap\ActiveForm;
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'action' => \yii\helpers\Url::to(['site/login']),
+        'method' => 'POST',
         'options' => ['class' => 'form-horizontal', 'style' => 'color:black'],
         'fieldConfig' => [
             'template' => "<div class=\"row col-lg-8 col-lg-offset-2\"><div class=\"col-lg-12\">{input}</div>\n<div class=\"col-lg-12\">{error}</div></div>",
