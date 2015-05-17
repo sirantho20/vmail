@@ -14,6 +14,7 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/ico" href="http://softcube.co/wp-content/uploads/2012/12/favicon.ico" />
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
@@ -63,7 +64,18 @@ AppAsset::register($this);
               <li> - Highly Secure</li>
           </ul>
           <br />
-          <a href="#" class="btn btn-lg btn-success">Sign Up Now</a>
+          <?php
+                Modal::begin([
+                'header' => '<div style="color: black;"><h2>Account Sign Up</h2></div>',
+                'size' => 'SIZE_SMALL',
+                'toggleButton' => ['label' => 'Sign Up Now', 'class' => 'btn btn-lg btn-success'],
+                ]);
+                $model = new app\models\AccountSignupTransaction();
+                echo $this->render("@app/views/transaction/_form",['model' => $model]);
+                
+
+                Modal::end();
+            ?>
         </div>
         <div class="col-md-6">
           <img src="img/iphone-6-plus-4-landscape.jpg" class="img-responsive mt" alt="">
