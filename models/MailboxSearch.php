@@ -45,7 +45,7 @@ class MailboxSearch extends Mailbox
         //$query = Mailbox::find();
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination' => array('pageSize' => 15),
+            'pagination' => array('pageSize' => 10),
         ]);
 
         $this->load($params);
