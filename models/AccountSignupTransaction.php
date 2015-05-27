@@ -40,7 +40,7 @@ class AccountSignupTransaction extends \yii\db\ActiveRecord
             [['account_name', 'domain', 'email', 'first_name', 'last_name', 'package_id', 'transaction_date', 'payment_status'], 'required'],
             [['account_name', 'domain', 'email', 'first_name', 'last_name'], 'filter', 'filter' => 'trim','skipOnArray' => true],
             [['package_id'], 'integer'],
-            [['transaction_date', 'payment_date'], 'safe'],
+            [['transaction_date', 'payment_date','captcha'], 'safe'],
             [['amount_paid'], 'number'],
             [['account_name', 'domain', 'email', 'first_name', 'last_name', 'payment_status', 'transaction_id'], 'string', 'max' => 255],
             [['captcha'],'captcha'],
@@ -75,7 +75,9 @@ class AccountSignupTransaction extends \yii\db\ActiveRecord
         if($this->isNewRecord)
         {
             $this->transaction_date = new \yii\db\Expression('now()');
-            $this->payment_date = 'unpaid';
+            $this->payment_status = 'unpaid';
         }
+        
+        return true;
     }
 }

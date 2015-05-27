@@ -77,7 +77,7 @@ class TransactionController extends Controller
 
             ## Create your Checkout Invoice
 
-                $co = new MPower_Checkout_Invoice();
+                $co = new \MPower_Checkout_Invoice();
 
             ## Create your Onsite Payment Request Invoice
 
@@ -109,14 +109,17 @@ class TransactionController extends Controller
             ## Redirecting to your checkout invoice page
 
                 if($co->create()) {
-                   header("Location: ".$co->getInvoiceUrl());
+                  return $this->redirect($co->getInvoiceUrl());
                 }else{
                   echo $co->response_text;
                 }
             
             //return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->goHome();
+            print_r($model->getErrors());
+            //die();
+            return $this->render('create',['model' => $model]);
+            
         }
     }
 

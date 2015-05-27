@@ -33,16 +33,16 @@ require_once("mpower/utilities.php");
 
 ## Setup your API Keys
 
-    MPower_Setup::setMasterKey(YOUR_API_MASTER_KEY);
-    MPower_Setup::setPublicKey(YOUR_API_PUBLIC_KEY);
-    MPower_Setup::setPrivateKey(YOUR_API_PRIVATE_KEY);
-    MPower_Setup::setMode(["test"|"live"]);
-    MPower_Setup::setToken(YOUR_API_TOKEN);
+    \MPower_Setup::setMasterKey('871b3cb3-997b-4b22-8a43-a351ada70f67');
+    \MPower_Setup::setPublicKey('test_public_aKJAW8EIBtnQhuQw6MloY2xzBOc');
+    \MPower_Setup::setPrivateKey('test_private_l74s0Eyp8cTX2AvfES6_uzJ8JPE');
+    \MPower_Setup::setMode('test');
+    \MPower_Setup::setToken('bcd8271a32982d39d7f3');
 
 ## Setup your checkout store information
 
-    MPower_Checkout_Store::setName("My Awesome Online Store");
-    MPower_Checkout_Store::setTagline("My awesome store's awesome tagline");
-    MPower_Checkout_Store::setPhoneNumber(STORE_PHONENO);
-    MPower_Checkout_Store::setPostalAddress(STORE_ADDRESS);
+    MPower_Checkout_Store::setName("Softcube Limited");
+    MPower_Checkout_Store::setTagline("Email Services Payment");
+    //MPower_Checkout_Store::setPhoneNumber(STORE_PHONENO);
+    //MPower_Checkout_Store::setPostalAddress(STORE_ADDRESS);
 
