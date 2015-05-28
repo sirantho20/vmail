@@ -13,6 +13,8 @@ use Yii;
  * @property integer $quota_allowed
  * @property string $next_due_date
  * @property integer $status
+ * @property integer $is_public Whether or not the package is listed publicly
+ * @property string $ Description
  *
  * @property Account[] $accounts
  */
