@@ -88,8 +88,8 @@ AppAsset::register($this);
         <div class="row centered">
           <div class="col-md-8 col-md-offset-2">
             <h1>We delight our customers with EXCELLENT and QUICK support to keep their business running</h1>
-            <h4>24/7 reliable support at no additional cost</h4>
-          </div><!--/col-md-8-->
+            <h3>24/7 reliable support at no additional cost</h3> <br />
+         <span><a class="btn btn-warning btn-lg" href="mailto:info@softcube.co">Contact Us</a></span> </div><!--/col-md-8-->
         </div>
       </div>
     </div><!--/sep-->
@@ -114,7 +114,18 @@ AppAsset::register($this);
                   <span class="detail">26</span>
                   <span class="sub">/yr.</span>
                 </div><!--/price-->
-                <button class="btn btn-conf-2 btn-green">Subscribe Now</button>
+                          <?php
+                Modal::begin([
+                'header' => '<div style="color: black;"><h2>Account Sign Up</h2></div>',
+                'size' => 'SIZE_SMALL',
+                'toggleButton' => ['label' => 'Sign Up Now', 'class' => 'btn btn-conf-2 btn-green'],
+                ]);
+                $model = new app\models\AccountSignupTransaction(); $model->package_id = app\models\AccountPackage::findOne(['package_slug' => 'starter'])->id;
+                echo $this->render("@app/views/transaction/_form",['model' => $model]);
+                
+
+                Modal::end();
+            ?>
               </div><!--/p-body-->
           </div><!--/price-table-->
         </div><!--/col-md-4-->
@@ -136,7 +147,18 @@ AppAsset::register($this);
                   <span class="detail">25</span>
                   <span class="sub">/yr.</span>
                 </div><!--/price-->
-                <button class="btn btn-conf-2 btn-green">Subscribe Now</button>
+                <?php
+                    Modal::begin([
+                    'header' => '<div style="color: black;"><h2>Account Sign Up</h2></div>',
+                    'size' => 'SIZE_SMALL',
+                    'toggleButton' => ['label' => 'Sign Up Now', 'class' => 'btn btn-conf-2 btn-green'],
+                    ]);
+                    $model = new app\models\AccountSignupTransaction(); $model->package_id = app\models\AccountPackage::findOne(['package_slug' => 'standard'])->id;
+                    echo $this->render("@app/views/transaction/_form",['model' => $model]);
+
+
+                    Modal::end();
+                ?>
               </div><!--/p-body-->
           </div><!--/price-table-->
         </div><!--/col-md-4-->
@@ -158,7 +180,18 @@ AppAsset::register($this);
                   <span class="detail">24</span>
                   <span class="sub">/yr.</span>
                 </div><!--/price-->
-                <button class="btn btn-conf-2 btn-green">Subscribe Now</button>
+                <?php
+                    Modal::begin([
+                    'header' => '<div style="color: black;"><h2>Account Sign Up</h2></div>',
+                    'size' => 'SIZE_SMALL',
+                    'toggleButton' => ['label' => 'Sign Up Now', 'class' => 'btn btn-conf-2 btn-green'],
+                    ]);
+                    $model = new app\models\AccountSignupTransaction(); $model->package_id = app\models\AccountPackage::findOne(['package_slug' => 'business'])->id;
+                    echo $this->render("@app/views/transaction/_form",['model' => $model]);
+
+
+                    Modal::end();
+                ?>
               </div><!--/p-body-->
           </div><!--/price-table-->
         </div><!--/col-md-4-->
@@ -221,8 +254,11 @@ AppAsset::register($this);
           <h5><?= Yii::$app->formatter->asEmail('INFO@SOFTCUBE.CO') ?></h5>
 
           <p class="mt">
+            <a href="skype:sirantho20?call"><i class="ion-social-skype"></i></a>
             <a href="https://facebook.com/softcubelimited"><i class="ion-social-twitter"></i></a>
             <a href="https://twitter.com/softcubelimited"><i class="ion-social-facebook"></i></a>
+            <a href="https://google.com/+SoftcubeCo"><i class="ion-social-googleplus"></i></a>
+            
           </p>
         </div><!--/row-->
       </div><!--/container-->

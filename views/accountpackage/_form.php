@@ -17,7 +17,11 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'emails_allowed')->textInput() ?>
 
     <?= $form->field($model, 'quota_allowed')->textInput() ?>
-
+    
+    <?= $form->field($model, 'package_slug')->textInput() ?>
+    
+    <?= $form->field($model, 'is_public')->radioList([true => 'Yes', false => 'No']) ?>
+    
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

@@ -13,8 +13,8 @@ use Yii;
  * @property integer $quota_allowed
  * @property string $next_due_date
  * @property integer $status
- * @property integer $is_public Whether or not the package is listed publicly
- * @property string $ Description
+ * @property boolean $is_public Whether or not the package is listed publicly
+ * @property string $package_slug Slug to identify package
  *
  * @property Account[] $accounts
  */
@@ -35,7 +35,8 @@ class AccountPackage extends \yii\db\ActiveRecord
     {
         return [
             [['emails_allowed', 'quota_allowed', 'status'], 'integer'],
-            [['next_due_date'], 'safe'],
+            [['next_due_date', 'is_public', 'package_slug'], 'safe'],
+            [['package_slug'], 'unique'],
             [['package_name'], 'string', 'max' => 255]
         ];
     }
@@ -52,6 +53,7 @@ class AccountPackage extends \yii\db\ActiveRecord
             'quota_allowed' => 'Quota Allowed',
             'next_due_date' => 'Next Due Date',
             'status' => 'Status',
+            'is_public' =>'Show Publicly'
         ];
     }
 
