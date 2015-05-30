@@ -76,6 +76,12 @@ AppAsset::register($this);
 
                 Modal::end();
             ?>
+          <br /><span style="font-size: 48px;">
+              <i class="ion-social-apple"></i>
+              <i class="ion-social-tux"></i>
+              <i class="ion-social-windows"></i>
+              <i class="ion-social-android"></i>
+          </span>
         </div>
         <div class="col-md-6">
           <img src="img/iphone-6-plus-4-landscape.jpg" class="img-responsive mt" alt="">
@@ -83,16 +89,36 @@ AppAsset::register($this);
       </div><!--/row-->
     </div><!--/container-->
 
-    <div id="sep">
+    
+        <div id="green">
       <div class="container">
         <div class="row centered">
-          <div class="col-md-8 col-md-offset-2">
-            <h1>We delight our customers with EXCELLENT and QUICK support to keep their business running</h1>
-            <h3>24/7 reliable support at no additional cost</h3> <br />
-         <span><a class="btn btn-warning btn-lg" href="mailto:info@softcube.co">Contact Us</a></span> </div><!--/col-md-8-->
+            <h1>Enjoy 3 months FREE when you sign up today</h1>
+            <h3>This offer is valid whiles stock lasts</h3>
+            <i style="font-size: 1000%;" class="ion-coffee"></i>
+          <!--<div class="col-md-6 col-md-offset-3 centered">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+              
+              <div class="carousel-inner">
+                <div class="item active">
+                  <h3>I enjoyed so much the last edition of Landing Sumo, that I bought the tickets for the new one edition of the event the first day.</h3>
+                  <h5><tgr>DAVID JHONSON</tgr></h5>
+                </div>
+                <div class="item">
+                  <h3>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h3>
+                  <h5><tgr>MARK LAWRENCE</tgr></h5>
+                </div>
+                <div class="item">
+                  <h3>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration, by injected humour.</h3>
+                  <h5><tgr>LISA SMITH</tgr></h5>
+                </div>
+              </div>
+            </div>
+
+          </div>-->
         </div>
       </div>
-    </div><!--/sep-->
+    </div>
 
     <div class="container ptb">
       <div class="row centered">
@@ -112,7 +138,7 @@ AppAsset::register($this);
                 <div class="price">
                   <span class="sub">$</span>
                   <span class="detail">26</span>
-                  <span class="sub">/yr.</span>
+                  <span class="sub">/yr/user</span>
                 </div><!--/price-->
                           <?php
                 Modal::begin([
@@ -145,7 +171,7 @@ AppAsset::register($this);
                 <div class="price">
                   <span class="sub">$</span>
                   <span class="detail">25</span>
-                  <span class="sub">/yr.</span>
+                  <span class="sub">/yr/user</span>
                 </div><!--/price-->
                 <?php
                     Modal::begin([
@@ -178,7 +204,7 @@ AppAsset::register($this);
                 <div class="price">
                   <span class="sub">$</span>
                   <span class="detail">24</span>
-                  <span class="sub">/yr.</span>
+                  <span class="sub">/yr/user</span>
                 </div><!--/price-->
                 <?php
                     Modal::begin([
@@ -195,6 +221,12 @@ AppAsset::register($this);
               </div><!--/p-body-->
           </div><!--/price-table-->
         </div><!--/col-md-4-->
+        <div class="container">
+            
+            <h2>Payment Options</h2>
+            <img style="width: 40%; height: 40%;" src="img/ways-to-pay-gs.jpg" alt=""/>
+        
+        </div>
       </div><!--/row-->
     </div><!--/container-->
 
@@ -219,38 +251,19 @@ AppAsset::register($this);
         </div>
       </div>row
     </div>g -->
-
-    <!--/<div id="green">
+<div id="sep">
       <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3 centered">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-              
-              <div class="carousel-inner">
-                <div class="item active">
-                  <h3>I enjoyed so much the last edition of Landing Sumo, that I bought the tickets for the new one edition of the event the first day.</h3>
-                  <h5><tgr>DAVID JHONSON</tgr></h5>
-                </div>
-                <div class="item">
-                  <h3>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h3>
-                  <h5><tgr>MARK LAWRENCE</tgr></h5>
-                </div>
-                <div class="item">
-                  <h3>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration, by injected humour.</h3>
-                  <h5><tgr>LISA SMITH</tgr></h5>
-                </div>
-              </div>
-            </div>
-
-          </div>
+        <div class="row centered">
+          <div class="col-md-8 col-md-offset-2">
+            <h1>We delight our customers with EXCELLENT and QUICK support to keep their business running</h1>
+            <h3>24/7 reliable support at no additional cost</h3> <br />
+         <span><a class="btn btn-warning btn-lg" href="mailto:info@softcube.co">Contact Us</a></span> </div><!--/col-md-8-->
         </div>
       </div>
-    </div>-->
-
+    </div><!--/sep-->
     <div id="f">
       <div class="container">
         <div class="row centered">
-          <h2>You Can Contact Us</h2>
           <h5><?= Yii::$app->formatter->asEmail('INFO@SOFTCUBE.CO') ?></h5>
 
           <p class="mt">
