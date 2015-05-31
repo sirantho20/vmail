@@ -88,7 +88,9 @@ class TransactionController extends Controller
             ## Redirect URL
                 $co->setReturnUrl(Yii::$app->urlManager->createAbsoluteUrl(['transaction/validatetransaction']));
                 
-                
+                $co->addCustomData("firstName",$model->first_name.' '.$model->last_name);
+                $co->addCustomData("Email",$model->email);
+                $co->addCustomData("Domain",$model->domain);
                 if($co->create()) 
                 {
                   return $this->redirect($co->getInvoiceUrl());
@@ -166,14 +168,45 @@ class TransactionController extends Controller
             
             if($invoice->getStatus() == 'completed')
             {
+                $record = AccountSignupTransaction::findOne(['domain' => $invoice->getCustomData('Domain')]);
+                
+                ## add transaction ID and other data
+                $record->transaction_id = $token;
+                $record->payment_date = (new \yii\db\Expression('now()'));
+                $record->payment_status = 'paid';
+                $record->amount_paid = $invoice->getTotalAmount();
+                $record->update();
+                
+                ## Create Domain
                 $domain = new \app\models\Domain();
+                $domain->domain = $record->domain;
+                $domain->save();
                 
-                //populate domain details
+                ## Create Account
+                $account = new \app\models\Account();
+                $account->domain = $record->domain;
+                $account->package_id = $record->package_id;
+                $account->name = $record->account_name;
+                $account->save();
                 
-                if($domain->save())
-                {
-                    $account = new \app\models\Account();
-                }
+                ## Subscribe Account to package
+                $subs = new \app\models\AccountSubscription();
+                $subs->account_id = $account->id;
+                $subs->package_id = $account->package_id;
+                $subs->duration = Yii::$app->params['signupDuration'];
+                $subs->subscription_date = new \yii\db\Expression('now()');
+                $subs->expiry_date = new \yii\db\Expression('DATE_ADD(now(),INTERVAL :interval MONTH)',['interval'=>Yii::$app->params['signupDuration']]);
+                $subs->save();
+                
+                ## Create Account User
+                $user = new \app\models\AccountUsers();
+                $user->first_name = $record->first_name;
+                $user->last_name = $record->last_name;
+                $user->email = $record->email;
+                $user->account_id = $account->id;
+                $user->save();
+                
+                
                 
                 
             }
