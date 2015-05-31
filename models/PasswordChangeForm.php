@@ -19,15 +19,24 @@ class PasswordChangeForm extends Model {
     
     public $current_password;
     public $new_password;
-    
+    public $password_repeat;
+
+
     public function rules() {
        return [
            [['current_password', 'new_password'], 'required'],
+           ['password_repeat', 'compare', 'compareAttribute' => 'new_password'],
            [['current_password', 'new_password'], 'safe'],
        ];
     }
     
-    public function verifyPassword()
+    public function attributeLabels() {
+        return [
+          'password_repeat' => 'Confirm Password',  
+        ];
+    }
+
+        public function verifyPassword()
     {
         $user = AccountUsers::findOne(['email' => \Yii::$app->user->identity->email]);
         

@@ -45,6 +45,7 @@ class AccountSignupTransaction extends \yii\db\ActiveRecord
             [['account_name', 'domain', 'email', 'first_name', 'last_name', 'payment_status', 'transaction_id'], 'string', 'max' => 255],
             [['captcha'],'captcha'],
             [['email'], 'email'],
+            [['domain'], 'checkDomain'],
         ];
     }
 
@@ -79,5 +80,13 @@ class AccountSignupTransaction extends \yii\db\ActiveRecord
         }
         
         return true;
+    }
+    
+    public function checkDomain($attribute, $params)
+    {
+        if($re = Mailbox::find(['domain' => $this->domain])->exists())
+        {
+            $this->addError($attribute, 'Account already exists for this domain.');
+        }
     }
 }

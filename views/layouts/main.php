@@ -39,19 +39,20 @@ AppAsset::register($this);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
-                    ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'Emails', 'url' => ['/mailbox/index']],
-                    ['label' => 'Accounts', 'url' =>['/account/index'], 'visible' => app\components\Mailmax::isAdmin()],
-                    ['label' => 'Users', 'url' =>['/accountusers/index'], 'visible' => app\components\Mailmax::isAdmin()],
-                    ['label' => 'Packages', 'url' =>['/accountpackage/index'],'visible' => app\components\Mailmax::isAdmin()],
+                    ['label' => ' Home', 'url' => ['/site/index'], 'linkOptions' => ['class' => 'ion-home']],
+                    ['label' => ' Emails', 'url' => ['/mailbox/index'],'visible' => (!Yii::$app->user->isGuest), 'linkOptions' => ['class' => 'ion-email']],
+                    ['label' => ' Accounts', 'url' =>['/account/index'], 'visible' => app\components\Mailmax::isAdmin(), 'linkOptions' => ['class' => 'ion-ios-list']],
+                    ['label' => ' Users', 'url' =>['/accountusers/index'], 'visible' => app\components\Mailmax::isAdmin(), 'linkOptions' => ['class' => 'ion-ios-people']],
+                    ['label' => ' Packages', 'url' =>['/accountpackage/index'],'visible' => app\components\Mailmax::isAdmin(), 'linkOptions' => ['class' => 'ion-cube']],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
                         [
-                            'label' => Yii::$app->user->identity->first_name,
+                            'label' => ' '.Yii::$app->user->identity->first_name,
+                            'linkOptions' => ['class' => 'ion-person'],
                             'items' => [
-                                 ['label' => 'Change Password', 'url' => ['user/changepassword']],
+                                 ['label' => ' Change Password', 'url' => ['user/changepassword'], 'linkOptions' => ['class' => 'ion-lock-combination']],
                                  '<li class="divider"></li>',
-                                 ['label' => 'Sign Out', 'url' => ['/site/logout'],'linkOptions' => ['data-method' => 'post']],
+                                 ['label' => ' Sign Out', 'url' => ['/site/logout'],'linkOptions' => ['data-method' => 'post', 'class'=>'ion-power']],
                             ],
                         ],
                 ],

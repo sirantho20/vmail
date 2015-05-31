@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="mailbox-index">
 
     <div class="panel panel-default">
-  <!-- Default panel contents --><?= Html::a('<i class="fa fa-plus">New Email</i>', ['create'], ['class' => 'btn btn-sm btn-success', 'style'=> 'float: right; margin:2px;']) ?>
+  <!-- Default panel contents --><?= Html::a('<i class="ion-person-add"> New Email</i>', ['create'], ['class' => 'btn btn-sm btn-success', 'style'=> 'float: right; margin:2px;']) ?>
   <div class="panel-heading">Email Accounts </div>
 
     <?= GridView::widget([
