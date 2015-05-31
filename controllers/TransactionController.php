@@ -65,15 +65,6 @@ class TransactionController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             include \Yii::getAlias('@app').'/components/mpower.php';
             
-            ## Customer will be redirected back to this URL when he cancels the checkout on MPower website
-
-            ## MPower_Checkout_Store::setCancelUrl(CHECKOUT_CANCEL_URL);
-
-//            MPower will automatically redirect customer to this URL after successfull payment.
-//            This setup is optional and highly recommended you dont set it, unless you want to customize the payment experience of your customers.
-//            When a returnURL is not set, MPower will redirect the customer to the receipt page.
-
-//                MPower_Checkout_Store::setReturnUrl(CHECKOUT_RETURN_URL);
 
             ## Create your Checkout Invoice
 
@@ -90,31 +81,23 @@ class TransactionController extends Controller
             ## Set the total amount to be charged ! Important
 
                 $co->setTotalAmount(1200.99);
-
-            ## Optionally set an invoice description
+                
 
                 $co->setDescription("This is good for packaged pricing tables on your website.");
-
-            ## Setup Tax Information (Optional)
-
-                #$co->addTax("VAT (15)",50);
-                #$co->addTax("NHIL (10)",50);
-
-            ## You can add custom data to your invoice which can be called back later
-
-//                $co->addCustomData("Firstname","Alfred");
-//                $co->addCustomData("Lastname","Rowe");
-//                $co->addCustomData("CartId",929292872);
-
-            ## Redirecting to your checkout invoice page
-
-                if($co->create()) {
+                
+            ## Redirect URL
+                $co->setReturnUrl(Yii::$app->urlManager->createAbsoluteUrl(['transaction/validatetransaction']));
+                
+                
+                if($co->create()) 
+                {
                   return $this->redirect($co->getInvoiceUrl());
-                }else{
+                }
+                else
+                {
                   echo $co->response_text;
                 }
-            
-            //return $this->redirect(['view', 'id' => $model->id]);
+                
         } else {
             print_r($model->getErrors());
             //die();
@@ -164,10 +147,37 @@ class TransactionController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = AccountSignupTransaction::findOne($id)) !== null) {
+        if (($model = AccountSignupTransaction::findOne($id)) !== null) 
+        {
             return $model;
-        } else {
+        } 
+        else 
+        {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    
+    public function validateTransaction($token)
+    {
+        $invoice = new \MPower_Checkout_Invoice();
+
+        if ($invoice->confirm($token)) 
+        {
+            
+            if($invoice->getStatus() == 'completed')
+            {
+                $domain = new \app\models\Domain();
+                
+                //populate domain details
+                
+                if($domain->save())
+                {
+                    $account = new \app\models\Account();
+                }
+                
+                
+            }
+        }
+
     }
 }
