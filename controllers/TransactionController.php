@@ -159,7 +159,7 @@ class TransactionController extends Controller
         }
     }
     
-    public function validateTransaction($token)
+    public function actionValidatetransaction($token)
     {
         $invoice = new \MPower_Checkout_Invoice();
 
@@ -180,6 +180,7 @@ class TransactionController extends Controller
                 ## Create Domain
                 $domain = new \app\models\Domain();
                 $domain->domain = $record->domain;
+                $domain->created = new \yii\db\Expression('now()');
                 $domain->save();
                 
                 ## Create Account
@@ -187,6 +188,8 @@ class TransactionController extends Controller
                 $account->domain = $record->domain;
                 $account->package_id = $record->package_id;
                 $account->name = $record->account_name;
+                $account->date_added = new \yii\db\Expression('now()');
+                $account->status = 1;
                 $account->save();
                 
                 ## Subscribe Account to package
@@ -204,13 +207,21 @@ class TransactionController extends Controller
                 $user->last_name = $record->last_name;
                 $user->email = $record->email;
                 $user->account_id = $account->id;
+                $user->username = $record->email;
+                $user->password = 123;
                 $user->save();
                 
+                ## Send confirmation email with password
                 
-                
+            return $this->goHome(); 
                 
             }
         }
 
+    }
+    
+    public function actionTest($token)
+    {
+        echo $token;
     }
 }

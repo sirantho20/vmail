@@ -12,21 +12,6 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-    <!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//analytics.softcube.co/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', 1]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="//analytics.softcube.co/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
 
     <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -110,7 +95,7 @@ AppAsset::register($this);
       <div class="container">
         <div class="row centered">
             <h1>Enjoy 3 months FREE when you sign up today</h1>
-            <h3>This offer is valid whiles stock lasts</h3>
+            <h3>This offer is valid whiles stocks last</h3>
             <i style="font-size: 1000%;" class="ion-coffee"></i>
           <!--<div class="col-md-6 col-md-offset-3 centered">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -294,8 +279,23 @@ AppAsset::register($this);
     </div><!--/F-->
 
 <?php $this->endBody() ?>
-        <!-- Custom Theme JavaScript -->
-   
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//analytics.softcube.co/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//analytics.softcube.co/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
 </body>
 </html>
 <?php $this->endPage() ?>

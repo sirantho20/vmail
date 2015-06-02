@@ -26,7 +26,7 @@ $config = [
             // Disable index.php
             'showScriptName' => true,
             // Disable r= routes
-            'enablePrettyUrl' => false,
+            'enablePrettyUrl' => true,
         ],
         'mailer' => [ 
             'class' => 'yii\swiftmailer\Mailer', 

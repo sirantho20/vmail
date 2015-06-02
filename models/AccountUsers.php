@@ -20,6 +20,7 @@ use yii\db\ActiveRecord;
  * @property string $created_at
  * @property string $updated_at
  * @property string $last_login
+ * @property string $username
  *
  * @property Account $account
  */
