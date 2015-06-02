@@ -161,6 +161,8 @@ class TransactionController extends Controller
     
     public function actionValidatetransaction($token)
     {
+        include Yii::getAlias('@app').'/components/mpower.php';
+        
         $invoice = new \MPower_Checkout_Invoice();
 
         if ($invoice->confirm($token)) 
@@ -169,7 +171,7 @@ class TransactionController extends Controller
             if($invoice->getStatus() == 'completed')
             {
                 $record = AccountSignupTransaction::findOne(['domain' => $invoice->getCustomData('Domain')]);
-                
+                $record->scenario = 'auto';
                 ## add transaction ID and other data
                 $record->transaction_id = $token;
                 $record->payment_date = (new \yii\db\Expression('now()'));
@@ -189,7 +191,7 @@ class TransactionController extends Controller
                 $account->package_id = $record->package_id;
                 $account->name = $record->account_name;
                 $account->date_added = new \yii\db\Expression('now()');
-                $account->status = 1;
+                $account->status = '1';
                 $account->save();
                 
                 ## Subscribe Account to package
@@ -202,18 +204,28 @@ class TransactionController extends Controller
                 $subs->save();
                 
                 ## Create Account User
+                $password = Yii::$app->security->generateRandomString(10);
                 $user = new \app\models\AccountUsers();
                 $user->first_name = $record->first_name;
                 $user->last_name = $record->last_name;
                 $user->email = $record->email;
                 $user->account_id = $account->id;
                 $user->username = $record->email;
-                $user->password = 123;
+                $user->password = $password;
                 $user->save();
                 
                 ## Send confirmation email with password
-                
-            return $this->goHome(); 
+                Yii::$app->mailer->compose('signupConfirm',[
+                            'first_name' => $user->first_name, 
+                            'email' => $user->email, 
+                            'password' => $password,
+                            
+                            ])
+                        ->setTo($user->email)
+                        ->setSubject('Welcome to Softcube mail')
+                        ->setFrom(\Yii::$app->params['fromEmail'])
+                        ->send();
+            //return $this->goHome(); 
                 
             }
         }
@@ -222,6 +234,6 @@ class TransactionController extends Controller
     
     public function actionTest($token)
     {
-        echo $token;
+        echo Yii::$app->request->getSrverName();
     }
 }

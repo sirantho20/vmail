@@ -6,4 +6,5 @@ return [
         'sirantho20@gmail.com',
     ],
     'signupDuration' => 12,
+    'fromEmail' => 'info@softcube.co',
 ];

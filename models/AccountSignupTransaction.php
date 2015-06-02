@@ -46,7 +46,16 @@ class AccountSignupTransaction extends \yii\db\ActiveRecord
             [['captcha'],'captcha'],
             [['email'], 'email'],
             [['domain'], 'checkDomain'],
+            ['email', 'unique', 'targetClass' => '\app\models\AccountUsers', 'targetAttribute' => 'email'],
         ];
+    }
+    
+    public function scenarios()
+    {
+        $scenario = parent::scenarios();
+        $scenario['auto'] = ['account_name', 'domain', 'email', 'first_name', 'last_name', 'package_id', 'transaction_date', 'payment_status'];
+        
+        return $scenario;
     }
 
     /**
@@ -84,7 +93,7 @@ class AccountSignupTransaction extends \yii\db\ActiveRecord
     
     public function checkDomain($attribute, $params)
     {
-        if($re = Domain::find(['domain' => $this->domain])->exists())
+        if(Domain::find()->where(['domain' => $this->domain])->exists())
         {
             $this->addError($attribute, 'Account already exists for this domain.');
         }

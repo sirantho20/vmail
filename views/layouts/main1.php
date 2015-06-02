@@ -85,7 +85,7 @@ AppAsset::register($this);
           </span>
         </div>
         <div class="col-md-6">
-          <img src="img/iphone-6-plus-4-landscape.jpg" class="img-responsive mt" alt="">
+            <img src="<?= Yii::getAlias('@web'); ?>/img/iphone-6-plus-4-landscape.jpg" class="img-responsive mt" alt="">
         </div>
       </div><!--/row-->
     </div><!--/container-->
