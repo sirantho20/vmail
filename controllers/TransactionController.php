@@ -225,7 +225,7 @@ class TransactionController extends Controller
                         ->setSubject('Welcome to Softcube mail')
                         ->setFrom(\Yii::$app->params['fromEmail'])
                         ->send();
-            //return $this->goHome(); 
+            return $this->render('confirm');
                 
             }
         }
