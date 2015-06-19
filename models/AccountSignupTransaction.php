@@ -49,7 +49,14 @@ class AccountSignupTransaction extends \yii\db\ActiveRecord
             ['email', 'unique', 'targetClass' => '\app\models\AccountUsers', 'targetAttribute' => 'email'],
         ];
     }
-    
+    public function checkEmail($attribute, $params)
+    {
+        if(AccountUsers::find()->where(['email' => $this->email])->exists())
+        {
+           $this->addError($attribute,'Email already taken. Use a different email address.');
+        }
+    }
+
     public function scenarios()
     {
         $scenario = parent::scenarios();

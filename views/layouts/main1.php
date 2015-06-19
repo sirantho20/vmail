@@ -85,7 +85,7 @@ AppAsset::register($this);
           </span>
         </div>
         <div class="col-md-6">
-            <img src="<?= Yii::getAlias('@web'); ?>/img/iphone-6-plus-4-landscape.jpg" class="img-responsive mt" alt="">
+            <img src="<?= Yii::getAlias('@web'); ?>/img/mail-all-retina.png" class="img-responsive mt" alt="">
         </div>
       </div><!--/row-->
     </div><!--/container-->
@@ -95,7 +95,7 @@ AppAsset::register($this);
       <div class="container">
         <div class="row centered">
             <h1>Enjoy 3 months FREE when you sign up today</h1>
-            <h3>This offer is valid whiles stocks last</h3>
+            <h3>This offer is of limited time only</h3>
             <i style="font-size: 1000%;" class="ion-coffee"></i>
           <!--<div class="col-md-6 col-md-offset-3 centered">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">

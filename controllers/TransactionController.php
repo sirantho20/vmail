@@ -74,14 +74,14 @@ class TransactionController extends Controller
 
 //            Params for addItem function `addItem(name_of_item,quantity,unit_price,total_price,optional_description)`
                 $package = \app\models\AccountPackage::findOne($model->package_id);
-                $co->addItem($package->package_name,1,999.99,999.99);
+                $co->addItem('Email Hosting - '.$package->package_name,1,$package->price,$package->price);
 
             ## Set the total amount to be charged ! Important
 
-                $co->setTotalAmount(1200.99);
+                $co->setTotalAmount($package->price);
                 
 
-                $co->setDescription("This is good for packaged pricing tables on your website.");
+                $co->setDescription("Email hosting package purchase ".$package->price);
                 
             ## Redirect URL
                 $co->setReturnUrl(Yii::$app->urlManager->createAbsoluteUrl(['transaction/validatetransaction']));
@@ -213,11 +213,10 @@ class TransactionController extends Controller
                 $user->save();
                 
                 ## Send confirmation email with password
-                Yii::$app->mailer->compose('signupConfirm',[
+                @Yii::$app->mailer->compose('signupConfirm',[
                             'first_name' => $user->first_name, 
                             'email' => $user->email, 
                             'password' => $password,
-                            
                             ])
                         ->setTo($user->email)
                         ->setSubject('Welcome to Softcube mail')

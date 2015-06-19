@@ -15,6 +15,7 @@ use Yii;
  * @property integer $status
  * @property boolean $is_public Whether or not the package is listed publicly
  * @property string $package_slug Slug to identify package
+ * @property integer $price Price of package
  *
  * @property Account[] $accounts
  */
@@ -35,7 +36,7 @@ class AccountPackage extends \yii\db\ActiveRecord
     {
         return [
             [['emails_allowed', 'quota_allowed', 'status'], 'integer'],
-            [['next_due_date', 'is_public', 'package_slug'], 'safe'],
+            [['next_due_date', 'is_public', 'package_slug', 'price'], 'safe'],
             [['package_slug'], 'unique'],
             [['package_name'], 'string', 'max' => 255]
         ];

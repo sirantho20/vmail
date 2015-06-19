@@ -18,6 +18,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'quota_allowed')->textInput() ?>
     
+    <?= $form->field($model, 'price')->textInput() ?>
+    
     <?= $form->field($model, 'package_slug')->textInput() ?>
     
     <?= $form->field($model, 'is_public')->radioList([true => 'Yes', false => 'No']) ?>

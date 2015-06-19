@@ -1,0 +1,198 @@
+﻿<!DOCTYPE HTML>
+<head>
+<title>Wallpapers World</title>
+<meta http-equiv="Content-Type" content="text/html; charset="utf-8" />
+<link rel="stylesheet" href="styles/layout2.css" type="text/css" />
+<script type="text/javascript" src="scripts/jquery-1.4.1.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="scripts/jquery.timers.1.2.js"></script>
+<script type="text/javascript" src="scripts/jquery.galleryview.2.1.1.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.galleryview.setup.js"></script>
+</head>
+<body id="top">
+<!-- ####################################################################################################### -->
+<div class="wrapper">
+  <div id="header">
+    <div class="fl_left">
+      <h1><a href="/"><strong>W</strong>allpapers <strong>W</strong>orld</a></h1>
+      <p>everyday new wallpaper</p>
+    </div>
+<div class="fl_right">
+<script>
+  (function() {
+    var cx = '007591548863035375118:2mbveomfo8g';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
+
+
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col2">
+  <div id="topbar">
+    <div id="topnav">
+      <ul>
+        <li><a href="/cat/topwall/1-page.html">Top Wallpapers</a></li>
+        <li><a href="/random.html">Random Wallpapers</a></li>
+        <li><a href="/">Category</a>
+          <ul>
+            <li><a href="../../cat/Celebrities/1-page.html">Celebrities (4 065)</a></li>
+            <li><a href="../../cat/Nature/1-page.html">Nature (3 843)</a></li>
+            <li><a href="../../cat/Animals/1-page.html">Animals (3 690)</a></li>
+            <li><a href="../../cat/Photography/1-page.html">Photography (3 337)</a></li>
+            <li><a href="../../cat/Games/1-page.html">Games (2 870)</a></li>
+            <li><a href="../../cat/Landscape/1-page.html">Landscape (2 854)</a></li>
+            <li><a href="../../cat/Flowers/1-page.html">Flowers (2 572)</a></li>
+            <li><a href="../../cat/Cars/1-page.html">Cars (2 244)</a></li>
+            <li><a href="../../cat/Abstract/1-page.html">Abstract (1 988)</a></li>
+            <li><a href="../../cat/Movies/1-page.html">Movies (1 256)</a></li>
+            <li><a href="../../cat/City/1-page.html">City (1 194)</a></li>
+            <li><a href="../../cat/Food and Drink/1-page.html">Food and Drink (1 162)</a></li>
+            <li><a href="../../cat/Logos/1-page.html">Logos (1 094)</a></li>
+			<li><a href="../../cat/Mainstream/1-page.html">Mainstream (25895)</a></li>
+            <li><a href="../../cat/Cartoons/1-page.html">Cartoons (1 026)</a></li>
+          </ul>
+        </li>
+        <li><a href="/">Top Resolutions</a>
+          <ul>
+            <li><a href="../../cat/1024-768.html">1024*768 (1 717)</a></li>
+            <li><a href="../../cat/1280-800.html">1280*800 (1 309)</a></li>
+            <li><a href="../../cat/1280-1024.html">1280*1024 (646)</a></li>
+            <li><a href="../../cat/1366-768.html">1366*768 (520)</a></li>
+            <li><a href="../../cat/1440-900.html">1440*900 (907)</a></li>
+            <li><a href="../../cat/1600-1000.html">1600*1000 (830)</a></li>
+            <li><a href="../../cat/1600-1200.html">1600*1200 (2 934)</a></li>
+            <li><a href="../../cat/1680-1050.html">1680*1050 (2 521) </a></li>
+            <li><a href="../../cat/1920-1080.html">1920*1080 (9 922)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper">
+  <div class="container">
+    <div class="content">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- newartcolorz-main(728*90) -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-1755519133743192"
+     data-ad-slot="7370932267"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+      <div id="featured_slide">
+        <ul id="featurednews">
+	<li><img src="/images/story-wallpaper/kartandtinki1_story-wallpaper_09-1.jpg" style="height: 300px; width: 600px; position: relative; top: 0px; left: 0px;">
+            <div class="panel-overlay">
+		<h2>Story Wallpaper</h2>
+              <p><a href="/cat/4/224451.html">>>full resolution</a></p>
+            </div>
+          </li>
+          <li><img src="/images/supernova-wallpaper/kartandtinki1_supernova-wallpaper_06-1.jpg" style="height: 300px; width: 600px; position: relative; top: 0px; left: 0px;">
+            <div class="panel-overlay">
+		<h2>Supernova Wallpaper</h2>
+              <p><a href="/cat/4/223294.html">>>full resolution</a></p>
+            </div>
+          </li>
+          <li><img src="/images/meditation-wallpaper/kartandtinki1_meditation-wallpaper_06-1.jpg" style="height: 300px; width: 600px; position: relative; top: 0px; left: 0px;">
+            <div class="panel-overlay">
+		<h2>Meditation Wallpaper</h2>
+              <p><a href="/cat/4/210247.html">>>full resolution</a></p>
+            </div>
+          </li>
+          <li><img src="/images/bakery-wallpaper/kartandtinki1_bakery-wallpaper_09-1.jpg" style="height: 300px; width: 600px; position: relative; top: 0px; left: 0px;">
+            <div class="panel-overlay">
+		<h2>Bakery Wallpaper</h2>
+              <p><a href="/cat/3/178893.html">>>full resolution</a></p>
+            </div>
+          </li>
+          <li><img src="/images/vine-wallpaper/kartandtinki1_vine-wallpaper_05-1.jpg" style="height: 300px; width: 600px; position: relative; top: 0px; left: 0px;">
+            <div class="panel-overlay">
+		<h2>Vine Wallpaper</h2>
+              <p><a href="/cat/5/233425.html">>>full resolution</a></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="column">
+      <ul class="latestnews">
+        <h2>Last added:</h2>
+<li><img src="../../images/archery-wallpaper/kartandtinki1_archery-wallpaper_11.jpg" alt="Archery Wallpaper" title="Archery Wallpaper" width="160px;" height="100px;" />
+<p><strong><a href="/cat/3/172050.html">Archery Wallpaper</a></strong><br><b>Category:</b><br>Mainstream<br><b>Resolution:</b><br>1920 x 946‬ px<br><b>Filesize:</b><br>380 KB</p>
+        </li>
+<li><img src="../../images/spring-wallpaper/kartandtinki1_spring-wallpaper_07.jpg" alt="Spring Wallpaper" title="Spring Wallpaper" width="160px;" height="100px;" />
+<p><strong><a href="/cat/4/221730.html">Spring Wallpaper</a></strong><br><b>Category:</b><br>Mainstream<br><b>Resolution:</b><br>2560 x 1600 ‬px<br><b>Filesize:</b><br>1,53 MB</p>
+        </li>
+<li><img src="../../images/thrasher-wallpaper/kartandtinki1_thrasher-wallpaper_14.jpg" alt="Thrasher Wallpaper" title="Thrasher Wallpaper" width="160px;" height="100px;" />
+<p><strong><a href="/cat/5/232015.html">Thrasher Wallpaper</a></strong><br><b>Category:</b><br>Mainstream<br><b>Resolution:</b><br>510 x 510‬px<br><b>Filesize:</b><br>46,5 KB</p>
+        </li>
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper">
+  <div class="container">
+    <div class="content">
+      <div id="hpage_latest">
+        <h2>Most Popular Wallpapers</h2>
+        <ul>
+<li> <a href="../../../cat/143796.html"><img src="../../../images/2014/9/forest-road-36166-36991-hd-wallpapers.jpg" alt="Forest Road 36166 1920x1200 px" title="Forest Road 36166 1920x1200 px" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Travel<br><br>Resolution: 1920x1200px<br><br>Filesize: 2.31 MB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/8/274383.html"><img src="../../../images/2015cars/ford-focus-rs/kartandtinki1_ford-focus-rs_05.jpg" alt="Ford Focus Rs" title="Ford Focus Rs" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Cars<br><br>Resolution: 1024 x 768<br><br>Filesize: 161 ÊÁ<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/5/235095.html"><img src="../../../images/wild-wallpaper/kartandtinki1_wild-wallpaper_11.jpg" alt="Wild Wallpaper" title="Wild Wallpaper" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Mainstream<br><br>Resolution: ?1680 x 1050?<br><br>Filesize: 626 KB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/133796.html"><img src="../../../images/2014/4/sunny-day-wallpaper-12591-13153-hd-wallpapers.jpg" alt="Sunny Day Wallpaper 12591" title="Sunny Day Wallpaper 12591" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Nature<br><br>Resolution: 1920x1200px<br><br>Filesize: 1.61 MB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/120214.html"><img src="../../../images/2014/6/daffodils-pictures-20839-21377-hd-wallpapers.jpg" alt="Daffodils Pictures 20839 1600x1200 px" title="Daffodils Pictures 20839 1600x1200 px" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Flowers<br><br>Resolution: 1600x1200px<br><br>Filesize: 288.77 KB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/143436.html"><img src="../../../images/2014/5/bowling-wallpaper-12137-12690-hd-wallpapers.jpg" alt="Bowling Wallpaper 12137" title="Bowling Wallpaper 12137" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Sports<br><br>Resolution: 1920x1080px<br><br>Filesize: 120.76 KB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/4/216444.html"><img src="../../../images/pastry-wallpaper/kartandtinki1_pastry-wallpaper_10.jpg" alt="Pastry Wallpaper" title="Pastry Wallpaper" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Mainstream<br><br>Resolution: ?1920 x 1080?<br><br>Filesize: 327 KB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/5/232408.html"><img src="../../../images/terminator-wallpaper/kartandtinki1_terminator-wallpaper_04.jpg" alt="Terminator Wallpaper" title="Terminator Wallpaper" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Mainstream<br><br>Resolution: ?1280 x 1024?<br><br>Filesize: 378 KB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/139354.html"><img src="../../../images/2014/8/urban-31138-31870-hd-wallpapers.jpg" alt="Urban 31138 1920x1200 px" title="Urban 31138 1920x1200 px" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Photography<br><br>Resolution: 1920x1200px<br><br>Filesize: 743.92 KB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/130773.html"><img src="../../../images/2014/4/toy-story-wallpaper-13280-13691-hd-wallpapers.jpg" alt="Toy Story Wallpaper 13280 1920x1080 px" title="Toy Story Wallpaper 13280 1920x1080 px" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Movies<br><br>Resolution: 1920x1080px<br><br>Filesize: 1.08 MB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/3/198733.html"><img src="../../../images/hunting-wallpapers/kartandtinki1_hunting-wallpapers_08.jpg" alt="Hunting Wallpapers" title="Hunting Wallpapers" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Mainstream<br><br>Resolution: ?1600 x 1200?<br><br>Filesize: 334 KB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/4/213874.html"><img src="../../../images/portal-wallpaper/kartandtinki1_portal-wallpaper_06.jpg" alt="Portal Wallpaper" title="Portal Wallpaper" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Mainstream<br><br>Resolution: ?1000 x 768?<br><br>Filesize: 32,3 KB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/121035.html"><img src="../../../images/2014/10/drink-wallpaper-45101-46272-hd-wallpapers.jpg" alt="Drink Wallpaper 45101 1920x1080 px" title="Drink Wallpaper 45101 1920x1080 px" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Food and Drink<br><br>Resolution: 1920x1080px<br><br>Filesize: 239.47 KB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/102293.html"><img src="../../../images/2014/7/puppy-face-wallpaper-39040-39936-hd-wallpapers.jpg" alt="Puppy Face Wallpaper 39040 1920x1080 px" title="Puppy Face Wallpaper 39040 1920x1080 px" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Animals<br><br>Resolution: 1920x1080px<br><br>Filesize: 329.31 KB<br></th> </tr> </thead> </table> </li>
+<li> <a href="../../../cat/3/173651.html"><img src="../../../images/atlas-wallpaper/kartandtinki1_atlas-wallpaper_14.jpg" alt="Atlas Wallpaper" title="Atlas Wallpaper" width="192px;" height="120px;" /></a> <table> <thead> <tr> <th> Category: Mainstream<br><br>Resolution: ?1480 x 1120?<br><br>Filesize: 223 KB<br></th> </tr> </thead> </table> </li>
+        </ul>
+        <br class="clear" />
+      </div>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col8">
+  <div id="copyright">
+    <p class="fl_left">Copyright &copy; 2015 - All Rights Reserved</p>
+<p class="fl_right">
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='//www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t44.1;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='31' height='31'><\/a>")
+//--></script><!--/LiveInternet-->
+</p>
+    <br class="clear" />
+  </div>
+</div>
+</body>
+</html>
