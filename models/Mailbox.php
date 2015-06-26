@@ -85,11 +85,12 @@ class Mailbox extends \yii\db\ActiveRecord
             [['username', 'password', 'quota', 'name'], 'required'],
             [['username'], 'unique'],
             [['quota', 'isadmin', 'isglobaladmin', 'enablesmtp', 'enablesmtpsecured', 'enablepop3', 'enablepop3secured', 'enableimap', 'enableimapsecured', 'enabledeliver', 'enablelda', 'enablemanagesieve', 'enablemanagesievesecured', 'enablesieve', 'enablesievesecured', 'enableinternal', 'enabledoveadm', 'enablelib-storage', 'enablelmtp', 'lastloginipv4', 'active'], 'integer'],
-            [['lastlogindate', 'passwordlastchange', 'created', 'modified', 'expired','pword'], 'safe'],
+            [['lastlogindate', 'passwordlastchange', 'created', 'modified', 'expired','pword','maildir'], 'safe'],
             [['disclaimer', 'allowedsenders', 'rejectedsenders', 'allowedrecipients', 'rejectedrecipients', 'settings'], 'string'],
             [['username', 'password', 'name', 'storagebasedirectory', 'storagenode', 'maildir', 'domain', 'transport', 'department', 'rank', 'employeeid', 'lastloginprotocol', 'local_part'], 'string', 'max' => 255],
             [['language'], 'string', 'max' => 5],
-            [['pword'], 'string', 'min' => 6]
+            [['pword'], 'string', 'min' => 6],
+            [['password'],'validateEmail'],
         ];
     }
 
@@ -149,6 +150,13 @@ class Mailbox extends \yii\db\ActiveRecord
         ];
     }
 
+    public function validateEmail($attribute, $params)
+    {
+        if(substr_count($this->username, '@') > 1)
+        {
+            $this->addError($attribute,"@ symbol is not allowed in mailbox name");
+        }
+    }
     public function beforeValidate()
     {
         parent::beforeValidate();
@@ -161,8 +169,15 @@ class Mailbox extends \yii\db\ActiveRecord
         
         if($this->isNewRecord)
         {
+            $username1 = $this->username;
+            
             $this->domain = Account::findOne(\Yii::$app->user->identity->account_id)->domain;
             $this->username = $this->username.'@'.$this->domain;
+            
+            $parts = str_split($this->username);
+            $dir = $this->domain.'/'.$parts[0].'/'.$parts[1].'/'.$parts[2].'/'.$username1.'-'.date("Y.m.d.H.i.s");
+            $this->maildir = $dir;
+            //die($dir);
         }
         
         return true;
