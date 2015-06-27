@@ -85,7 +85,7 @@ class Mailbox extends \yii\db\ActiveRecord
             [['username', 'password', 'quota', 'name'], 'required'],
             [['username'], 'unique'],
             [['quota', 'isadmin', 'isglobaladmin', 'enablesmtp', 'enablesmtpsecured', 'enablepop3', 'enablepop3secured', 'enableimap', 'enableimapsecured', 'enabledeliver', 'enablelda', 'enablemanagesieve', 'enablemanagesievesecured', 'enablesieve', 'enablesievesecured', 'enableinternal', 'enabledoveadm', 'enablelib-storage', 'enablelmtp', 'lastloginipv4', 'active'], 'integer'],
-            [['lastlogindate', 'passwordlastchange', 'created', 'modified', 'expired','pword','maildir'], 'safe'],
+            [['lastlogindate', 'passwordlastchange', 'created', 'modified', 'expired','maildir'], 'safe'],
             [['disclaimer', 'allowedsenders', 'rejectedsenders', 'allowedrecipients', 'rejectedrecipients', 'settings'], 'string'],
             [['username', 'password', 'name', 'storagebasedirectory', 'storagenode', 'maildir', 'domain', 'transport', 'department', 'rank', 'employeeid', 'lastloginprotocol', 'local_part'], 'string', 'max' => 255],
             [['language'], 'string', 'max' => 5],
@@ -154,21 +154,16 @@ class Mailbox extends \yii\db\ActiveRecord
     {
         if(substr_count($this->username, '@') > 1)
         {
-            $this->addError($attribute,"@ symbol is not allowed in mailbox name");
+            $this->addError('username',"@ symbol is not allowed in mailbox name");
         }
     }
     public function beforeValidate()
     {
-        parent::beforeValidate();
-        
-        if($this->pword != '')
-        {
-            //$this->password = shell_exec('openssl passwd -1 '.$this->pword);
-            $this->password = shell_exec('doveadm pw -s \'ssha512\' -p '.$this->pword);
-        }
-        
         if($this->isNewRecord)
         {
+            //$this->password = shell_exec('openssl passwd -1 '.'P@ssw0rd');
+            $this->password = shell_exec('doveadm pw -s \'ssha512\' -p '.'P@ssw0rd');
+            
             $username1 = $this->username;
             
             $this->domain = Account::findOne(\Yii::$app->user->identity->account_id)->domain;
@@ -180,7 +175,7 @@ class Mailbox extends \yii\db\ActiveRecord
             //die($dir);
         }
         
-        return true;
+        return parent::beforeValidate();
     }
     
 

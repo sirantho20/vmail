@@ -32,6 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return "<span class='label label-$class'>".$label.'</span>';
                 },
             ],
+            [
+                'header' => 'Password Reset',
+                'format' => 'html',
+                'value' => function($data){
+                    return '<a href="'.Yii::$app->urlManager->createAbsoluteUrl(['mailbox/resetpassword','mailbox' => $data['username']]).'" class = "btn btn-xs btn-warning" >'.'Reset'.'</a>';
+                }
+            ],
             'quota',
 
             [
