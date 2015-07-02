@@ -78,6 +78,7 @@ class MailboxController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->username]);
         } else {
+            print_r($model->getErrors());
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -131,5 +132,24 @@ class MailboxController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    
+    public function actionResetpassword($mailbox)
+    {
+        $pass = Yii::$app->security->generateRandomString(8);
+        
+        $user = Mailbox::findOne(['username' => $mailbox]);
+        //$user->password = shell_exec('openssl passwd -1 '.$pass);
+        $user->password = shell_exec('doveadm pw -s \'ssha512\' -p '.$pass);
+        if($user->update())
+        {
+            Yii::$app->session->setFlash('success', 'New password for '.$user->username.' is <strong>'.$pass.'</strong>');
+        }
+        else 
+        {
+            Yii::$app->session->setFlash('warning', 'Couldn\'t reset password for '.$user->username);
+        }
+        
+        return $this->redirect('index');
     }
 }
