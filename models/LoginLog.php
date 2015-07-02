@@ -11,6 +11,7 @@ use Yii;
  * @property string $username
  * @property string $login_date
  * @property string $login_ip
+ * @property string $domain
  */
 class LoginLog extends \yii\db\ActiveRecord
 {
@@ -29,7 +30,7 @@ class LoginLog extends \yii\db\ActiveRecord
     {
         return [
             [['login_date'], 'safe'],
-            [['username', 'login_ip'], 'string', 'max' => 255]
+            [['username', 'login_ip', 'domain'], 'string', 'max' => 255]
         ];
     }
 
@@ -43,6 +44,7 @@ class LoginLog extends \yii\db\ActiveRecord
             'username' => 'Username',
             'login_date' => 'Login Date',
             'login_ip' => 'Login Ip',
+            'domain' => 'Domain',
         ];
     }
 }

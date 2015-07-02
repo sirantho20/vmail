@@ -62,6 +62,7 @@ class LoginForm extends Model
             $log->username = $this->username;
             $log->login_date = new \yii\db\Expression('now()');
             $log->login_ip = \Yii::$app->request->userIP;
+            $log->domain = AccountUsers::findOne(['username' => $this->username])->account->domain;
             $log->save();
             
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
