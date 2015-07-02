@@ -12,6 +12,7 @@ class m150626_095228_createLoginLogTable extends Migration
             'username' => Schema::TYPE_STRING,
             'login_date' => Schema::TYPE_DATETIME,
             'login_ip' => Schema::TYPE_STRING,
+            'domain' => Schema::TYPE_STRING
         ]);
         
         
