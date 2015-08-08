@@ -10,25 +10,27 @@ use yii\grid\GridView;
 $this->title = 'Account Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="account-users-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Account Users', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
+<div class="account-index">
+    
+  <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
+  <div class="panel panel-default">
+  <!-- Default panel contents --><?= Html::a('<i class="fa fa-plus"> New Account</i>', ['create'], ['class' => 'btn btn-sm btn-success', 'style'=> 'float: right; margin:2px;']) ?>
+  <div class="panel-heading">Account Users </div>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary' => '',
+        'tableOptions' => ['class' => 'table table-condensed table-striped table-hover'],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+           // 'id',
             'first_name',
             'last_name',
-            'account_id',
+            [
+                'header' => 'Account Name',
+                'value' => 'account.name',
+            ],
             // 'password_hash',
             // 'password_reset_token',
             // 'email:email',
@@ -42,4 +44,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+</div>
 </div>

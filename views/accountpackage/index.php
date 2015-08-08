@@ -10,18 +10,17 @@ use yii\grid\GridView;
 $this->title = 'Account Packages';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="account-package-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Account Package', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
+<div class="account-index">
+    
+  <?php //echo $this->render('_search', ['model' => $searchModel]); ?>
+  <div class="panel panel-default">
+  <!-- Default panel contents --><?= Html::a('<i class="fa fa-plus"> New Account</i>', ['create'], ['class' => 'btn btn-sm btn-success', 'style'=> 'float: right; margin:2px;']) ?>
+  <div class="panel-heading"><h4>Account Packages</h4> </div>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
+        'summary' => '',
+        'tableOptions' => ['class'=> 'table table-condensed table-hover'],
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
 
@@ -36,4 +35,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+</div>
 </div>

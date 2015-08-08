@@ -134,4 +134,18 @@ class AccountController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    public function actionEmails($id)
+    {
+        $searchModel = new \app\models\MailboxSearch2();
+        
+        $domain = Account::findOne($id)->domain;
+        
+        $dataProvider = new \yii\data\ActiveDataProvider(['query' => \app\models\Mailbox::find()->where(['domain' => $domain])]);
+
+        return $this->render('emails', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 }

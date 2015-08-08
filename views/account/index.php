@@ -21,6 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'summary' => '',
+        'tableOptions' => ['class' => 'table table-condensed table-striped table-hover'],
         'columns' => [
             'name',
             'domain',
@@ -59,7 +60,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{update} {delete}'
+                'buttons' => [
+                    'emails' => function($url, $model, $key){
+                            $count = app\models\Mailbox::find()->where(['domain' => $model->domain])->count();
+                            return '<a href="'.$url.'">'.$count.' <i class="fa fa-envelope-o"></i></a>';
+                    }, 
+                    'update' => function($url, $model, $key){
+                            return '<a href="'.$url.'"><i class="fa fa-pencil-square-o"></i></a>';
+                    }
+                ],
+                'template' => '{update} | {emails}'
             ],
         ],
     ]); 

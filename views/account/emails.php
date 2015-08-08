@@ -19,8 +19,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'summary' => '',
-        'tableOptions' => ['class' => 'table table-condensed table-striped table-hover'],
         'summaryOptions' => ['style'=> 'float: right;'],
         'columns' => [
             'name',
@@ -35,29 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             [
-                'header' => 'Quota',
+                'header' => 'Password Reset',
                 'format' => 'html',
                 'value' => function($data){
-                    return '<div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                          60%
-                        </div>
-                      </div>';
+                    return '<a href="'.Yii::$app->urlManager->createAbsoluteUrl(['mailbox/resetpassword','mailbox' => $data['username']]).'" class = "btn btn-xs btn-warning" >'.'Reset'.'</a>';
                 }
             ],
+            'quota',
 
             [
                 'class' => 'yii\grid\ActionColumn',
-                'buttons' => [
-                    'reset' => function($url, $model, $key){
-                            return '<a title = "Reset Password" href="'.Yii::$app->urlManager->createAbsoluteUrl(['mailbox/resetpassword','mailbox' => $model->username]).'" class = "btn btn-xs btn-warning" >'.'<i class="fa fa-key"></i>'.'</a>';
-                        },
-                                
-                    'update' => function($url, $model, $key){
-                         return Html::a('<i class="fa fa-pencil-square-o"></i>', $url, ['class' => 'btn btn-xs btn-info', 'title' => 'Update Mailbox']);   
-                    }
-                ],
-                'template' => '{update} {reset}'
+                'template' => '{update} {delete}'
             ],
         ],
     ]); ?>
