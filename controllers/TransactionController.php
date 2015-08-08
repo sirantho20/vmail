@@ -177,11 +177,11 @@ class TransactionController extends Controller
                 $record->amount_paid = $invoice->getTotalAmount();
                 $record->update();
                 
-                ## Create Domain
-                $domain = new \app\models\Domain();
-                $domain->domain = $record->domain;
-                $domain->created = new \yii\db\Expression('now()');
-                $domain->save();
+//                ## Create Domain
+//                $domain = new \app\models\Domain();
+//                $domain->domain = $record->domain;
+//                $domain->created = new \yii\db\Expression('now()');
+//                $domain->save();
                 
                 ## Create Account
                 $account = new \app\models\Account();

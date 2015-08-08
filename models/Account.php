@@ -76,8 +76,12 @@ class Account extends \yii\db\ActiveRecord
     {
         return $this->hasOne(AccountPackage::className(), ['id' => 'package_id']);
     }
-    
-    public function signup()
+    public function getPackagesubscription()
+    {
+        return $this->hasOne(AccountSubscription::className(), ['account_id' => 'id']);
+    }
+
+        public function signup()
     {
         if($this->save())
         {
@@ -87,8 +91,10 @@ class Account extends \yii\db\ActiveRecord
             $sub->subscription_date = new \yii\db\Expression('now()');
             $sub->duration = $this->duration;
             $sub->expiry_date = new \yii\db\Expression('DATE_ADD(now(),INTERVAL :interval MONTH)',['interval'=>$this->duration]);
+            
             if($sub->save())
             {
+                
                 return true;
             }
             else 
@@ -102,5 +108,31 @@ class Account extends \yii\db\ActiveRecord
             return false;
         }
 
+    }
+    
+    public function beforeSave($insert) {
+        
+        if(parent::beforeSave($insert))
+        {
+            if(!Domain::find()->where(['domain' => $this->domain])->exists())
+            {
+                $domain  = new Domain();
+                $domain->domain = $this->domain;
+                $domain->description = $this->name;
+                $domain->created = new Expression('now()');
+                if($domain->save())
+                {
+                    return true;
+                }
+                else 
+                {
+                    return FALSE;
+                }
+            }
+            else 
+            {
+                return true;
+            }
+        }
     }
 }
