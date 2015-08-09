@@ -143,7 +143,7 @@ class AccountController extends Controller
         
         $dataProvider = new \yii\data\ActiveDataProvider(['query' => \app\models\Mailbox::find()->where(['domain' => $domain])]);
 
-        return $this->render('emails', [
+        return $this->render('@app/views/mailbox/index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

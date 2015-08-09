@@ -57,6 +57,7 @@ use Yii;
 class Mailbox extends \yii\db\ActiveRecord
 {
     public $pword;
+    public $quota_percent;
 //    public function behaviors()
 //    {
 //        return [
@@ -176,6 +177,18 @@ class Mailbox extends \yii\db\ActiveRecord
         }
         
         return parent::beforeValidate();
+    }
+    public function afterFind() {
+        
+        if(parent::afterFind())
+        {
+            $used = UsedQuota::findOne(['username' => $this->name])->bytes;
+            $used_mb = \round((($used/1024)/1024), 0, PHP_ROUND_HALF_UP);
+            $percentage = ($used_mb / $this->quota) * 100;
+            $this->quota_percent = $percentage;
+            
+            return true;
+        }
     }
     
 

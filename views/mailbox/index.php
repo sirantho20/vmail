@@ -38,14 +38,30 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'Quota',
                 'format' => 'html',
                 'value' => function($data){
-                    return '<div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                          60%
+                                    $used = app\models\UsedQuota::findOne(['username' => $data['username']])->bytes;
+                                    $used_mb = \round((($used/1024)/1024));
+                                    $percentage = ($used_mb / $data['quota']);
+                                    $val = round($percentage * 100);
+                                    $usage =  Yii::$app->formatter->asPercent($percentage);
+                                    if($val < 60)
+                                    {
+                                        $class = 'success';
+                                    }
+                                    elseif($val > 60 && $val < 85)
+                                    {
+                                        $class = 'warning';
+                                    }
+                                    else
+                                    {
+                                        $class = 'danger';
+                                    }
+                        return '<div class="progress">
+                        <div title="'.$usage.' of '.$data['quota'].'MB'.'" class="progress-bar progress-bar-'.$class.'" role="progressbar" aria-valuenow="'.$val.'" aria-valuemin="0" aria-valuemax="100" style="cursor: wait; width: '.$usage.';">
+                          '.$usage.'
                         </div>
                       </div>';
                 }
             ],
-
             [
                 'class' => 'yii\grid\ActionColumn',
                 'buttons' => [
