@@ -19,7 +19,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'summary' => '',
+        'layout' => "{items}\n{summary}\n{pager}",
+        //'summary' => '<span class="badge">{begin} to {end} of {totalCount}</span>',
         'tableOptions' => ['class' => 'table table-condensed table-striped table-hover'],
         'summaryOptions' => ['style'=> 'float: right;'],
         'columns' => [
@@ -38,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'Quota',
                 'format' => 'html',
                 'value' => function($data){
-                                    $used = app\models\UsedQuota::findOne(['username' => $data['username']])->bytes;
+                                    $used = @app\models\UsedQuota::findOne(['username' => $data['username']])->bytes;
                                     $used_mb = \round((($used/1024)/1024));
                                     $percentage = ($used_mb / $data['quota']);
                                     $val = round($percentage * 100);
@@ -70,10 +71,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         },
                                 
                     'update' => function($url, $model, $key){
-                         return Html::a('<i class="fa fa-pencil-square-o"></i>', $url, ['class' => 'btn btn-xs btn-info', 'title' => 'Update Mailbox']);   
+                         return Html::a('<i class="fa fa-pencil-square-o"></i>', Yii::$app->urlManager->createAbsoluteUrl(['mailbox/update', 'id' => $model->username]), ['class' => 'btn btn-xs btn-info', 'title' => 'Update Mailbox']);   
+                    },
+                    
+                    'delete' => function($url, $model, $key){
+                         return Html::a('<i class="fa fa-trash-o"></i>', Yii::$app->urlManager->createAbsoluteUrl(['mailbox/delete', 'id' => $model->username]), ['class' => 'btn btn-xs btn-danger', 'title' => 'Delete Mailbox', 'data-confirm' => 'Mailbox will be permanently deleted']);   
                     }
                 ],
-                'template' => '{update} {reset}'
+                'template' => '{update} {reset} {delete}'
             ],
         ],
     ]); ?>
