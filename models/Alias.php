@@ -18,6 +18,8 @@ use Yii;
  * @property string $modified
  * @property string $expired
  * @property integer $active
+ * 
+ * @property MailboxAlias $mailbox
  */
 class Alias extends \yii\db\ActiveRecord
 {
@@ -28,6 +30,11 @@ class Alias extends \yii\db\ActiveRecord
     {
         return 'alias';
     }
+    
+    public function getMailbox()
+    {
+        return $this->hasOne(Mailbox::className(), ['username' => 'goto']);
+    }
 
     /**
      * @inheritdoc
@@ -35,7 +42,7 @@ class Alias extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['address'], 'required'],
+            [['address', 'goto'], 'required'],
             [['goto', 'moderators'], 'string'],
             [['islist', 'active'], 'integer'],
             [['created', 'modified', 'expired'], 'safe'],
@@ -62,5 +69,15 @@ class Alias extends \yii\db\ActiveRecord
             'expired' => 'Expired',
             'active' => 'Active',
         ];
+    }
+    
+    public function beforeValidate() {
+        if(parent::beforeValidate())
+        {
+            $exp = explode('@', $this->goto);
+            $this->domain = $exp[1];
+            $this->created = new \yii\db\Expression('now()');
+            return true;
+        }
     }
 }

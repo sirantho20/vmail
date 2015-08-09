@@ -8,7 +8,6 @@ use yii\bootstrap\Tabs;
 
 $this->title = 'Update Mailbox: ' . ' ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Mailboxes', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->username]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 
@@ -16,7 +15,7 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <div class="panel panel-default">
   <!-- Default panel contents --><?php // Html::a('<i class="ion-person-add"> New Email</i>', ['create'], ['class' => 'btn btn-sm btn-success', 'style'=> 'float: right; margin:2px;']) ?>
-  <div class="panel-heading">Mailbox Update </div>
+  <div class="panel-heading">Update : <?= $model->username ?> </div>
   <div style="padding: 10px;">
 
     <?= 
@@ -27,12 +26,13 @@ $this->params['breadcrumbs'][] = 'Update';
      'items' => [
         [
             'label' => 'Details',
-            'content' => $this->render('_form',['model'=>$model]),
+            'content' => $this->render('_update',['model'=>$model]),
             'active' => true
         ],
         [
             'label' => 'Alias',
-            'content' => ''
+            'content' => $this->render('alias',['dataProvider'=>$aliasModel, 'email' => $model->username]),
+            'options' => ['id' => 'alias']
         ],
      ]
  ]);

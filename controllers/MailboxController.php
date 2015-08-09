@@ -94,6 +94,7 @@ class MailboxController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $aliasProvider = new \yii\data\ActiveDataProvider(['query' => \app\models\Alias::find()->where(['goto' => $id])]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             //return $this->redirect(['view', 'id' => $model->username]);
@@ -101,6 +102,7 @@ class MailboxController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'aliasModel' => $aliasProvider
             ]);
         }
     }
@@ -151,5 +153,33 @@ class MailboxController extends Controller
         }
         
         return $this->redirect('index');
+    }
+    
+    public function actionAddalias()
+    {
+        $model = new \app\models\Alias();
+        
+        if ($model->load(Yii::$app->request->post()) && $model->save()) 
+        {
+            
+            return $this->redirect(['update', 'id' => $model->goto, '#' => 'alias']);
+        } 
+        else 
+        {
+//            print_r($model->getErrors());
+//            return $this->render('create', [
+//                'model' => $model,
+//            ]);
+        }
+        
+    }
+    
+    public function actionDeletealias($address, $id)
+    {
+        
+        if(\app\models\Alias::deleteAll(['address' => $address]))
+        {
+            return $this->redirect(['update', 'id' => $id, '#' => 'alias']);
+        }
     }
 }
