@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\UsedQuota;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MailboxSearch */
@@ -61,6 +62,13 @@ $this->params['breadcrumbs'][] = $this->title;
                           '.$usage.'
                         </div>
                       </div>';
+                }
+            ],
+            [
+                'header' => 'Messages',
+                'format' => 'html',
+                'value' => function($data){
+                        return Yii::$app->formatter->asInteger(@UsedQuota::findOne(['username' => $data['username']])->messages);
                 }
             ],
             [
